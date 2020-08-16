@@ -1,0 +1,151 @@
+/**********************************************************************************
+ * TOOLS
+ * Name : Strings
+ **********************************************************************************/
+
+
+// Replace some characters by other ones
+// @source https://css-tricks.com/snippets/sass/str-replace-function/
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+
+// Making a string URL ready
+// @source https://css-tricks.com/snippets/sass/str-replace-function/
+
+@function url-encode($string) {
+  $map: (
+      "%": "%25",
+      "<": "%3C",
+      ">": "%3E",
+      " ": "%20",
+      "!": "%21",
+      "*": "%2A",
+      "'": "%27",
+      '"': "%22",
+      "(": "%28",
+      ")": "%29",
+      ";": "%3B",
+      ":": "%3A",
+      "@": "%40",
+      "&": "%26",
+      "=": "%3D",
+      "+": "%2B",
+      "$": "%24",
+      ",": "%2C",
+      "/": "%2F",
+      "?": "%3F",
+      "#": "%23",
+      "[": "%5B",
+      "]": "%5D"
+  );
+
+  $new: $string;
+
+  @each $search, $replace in $map {
+      $new: str-replace($new, $search, $replace);
+  }
+
+  @return $new;
+}
+
+// Remove the unit of a length
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+// @source https://css-tricks.com/snippets/sass/strip-unit-function/
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
+// Replace `$search` with `$replace` in `$string`
+// @param {String} $string - Initial string
+// @param {String | List | Map} $search - Substring(s) to replace
+// @param {String | List} $replace [''] - New value(s)
+// @return {String} - Updated string
+// @link https://css-tricks.com/snippets/sass/str-replace-function/
+
+@function str-replace($string, $search, $replace: "") {
+  @if type-of($search) == map {
+    @each $key, $value in $search {
+      $string: str-replace($string, $key, $value);
+    }
+  }
+
+  @else if type-of($search) == list and type-of($replace) == list {
+      @if length($search) != length($replace) {
+        @error "`$replace` must have the same length as `$search`.";
+      }
+
+      @for $i from 1 through length($search) {
+        $string: str-replace($string, nth($search, $i), nth($replace, $i));
+      }
+  }
+
+  @else if type-of($search) == list {
+    @each $key in $search {
+      $string: str-replace($string, $key, $replace);
+    }
+  }
+
+  @else if type-of($replace) == list {
+    @error "You cannot replace one item with multiple ones.";
+  }
+
+  @else {
+    $index: str-index($string, $search);
+
+    @if $index {
+      $string: str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+  }
+
+  @return $string;
+}
+
+// Check if `$string` contains `$search`
+// @param {String} $string - String to check
+// @param {String} $search - Substring to search
+// @return {Boolean}
+// @link https://github.com/sindresorhus/sass-extras
+
+@function str-contains($string, $search) {
+  @return str-index($string, $search) != null;
+}
+
+// @alias str-contains
+@function str-includes($string, $search) {
+  @return str-contains($string, $search);
+}
+
+// Check if `$string` starts with the given `$substring`.
+// @parameter {String} $string - String to check
+// @parameter {String} $search - Substring to search for at the start of `$string`
+// @return {Boolean}
+// @link https://github.com/sindresorhus/sass-extras
+@function str-starts-with($string, $search) {
+  @return str-index($string, $search) == 1;
+}
+
+// Check if `$string` ends with the given `$substring`.
+// @parameter {String} $string - String to check
+// @parameter {String} $search - Substring to search for at the end of `$string`
+// @return {Boolean}
+// @link https://github.com/sindresorhus/sass-extras
+
+@function str-ends-with($string, $search) {
+  @return str-slice($string, (str-length($string) - str-length($search) + 1)) == $search;
+}

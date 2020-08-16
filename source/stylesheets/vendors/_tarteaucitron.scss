@@ -1,0 +1,788 @@
+
+/**
+ * Global
+ *************************************************************/
+
+/* FONTS */
+$tac-font-default: sans-serif !default; // Text font
+$tac-font-primary: $tac-font-default !default; // Titles font
+
+/* SIZE */
+$tac-alert-vertical-padding: 20px !default; // Banner vertical padding
+$tac-gutter-size: 20px !default; // Banner gutter
+
+/* COLORS */
+$tac-color-white: #fff;
+$tac-color-black: #000;
+$tac-color-mine-shaft: #3e3e3e;
+$tac-color-desert-storm: #f3f3f1;
+$tac-color-iron: #dbdcdc;
+$tac-color-gray: #858484;
+$tac-color-punch: #dc3545;
+$tac-color-eucalyptus: #28a745;
+$tac-color-amber: #ffc107;
+
+$tac-color-primary: $tac-color-mine-shaft !default; // Titles and primary buttons color
+$tac-color-background: $tac-color-desert-storm !default; // Background dialog color
+$tac-color-foreground: $tac-color-mine-shaft !default; // Foreground dialog color
+$tac-color-alert-background: $tac-color-primary !default; // Background alert color
+$tac-color-alert-foreground: $tac-color-white !default; // Foreground alert color
+$tac-color-error: $tac-color-punch !default; // Error color
+$tac-color-success: $tac-color-eucalyptus !default; // Success color
+$tac-color-warning: $tac-color-amber !default; // Warning color
+$tac-color-deny: $tac-color-error !default; // Deny color
+$tac-color-allow: $tac-color-success !default; // Allow color
+$tac-color-border: $tac-color-iron !default; // Border color
+$tac-border-radius: 20px !default; // Border radius
+$tac-box-shadow: rem(0 2px 6px rgba($tac-color-black, 0.4)) !default; // Box shadow
+
+/**
+ * Global
+ *************************************************************/
+
+.modal-open {
+  overflow: hidden;
+  height: 100%;
+}
+
+#contentWrapper {
+  display: unset;
+}
+
+#tarteaucitron {
+  * {
+    zoom: 1;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  a {
+    color: inherit;
+    font-size: rem(11px);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  small {
+    font-size: smaller;
+  }
+
+  strong {
+    font-size: rem(22px);
+    font-weight: 500;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  .tarteaucitronH1,
+  .tarteaucitronH2,
+  .tarteaucitronH3,
+  .tarteaucitronH4,
+  .tarteaucitronH5,
+  .tarteaucitronH6 {
+    display: block;
+  }
+
+  .tarteaucitronH1 {
+    font-family: $tac-font-primary;
+    font-size: rem(26px);
+    font-weight: bold;
+  }
+
+  .tarteaucitronH2 {
+    font-family: $tac-font-primary;
+    font-size: rem(17px);
+    font-weight: bold;
+  }
+
+  .tarteaucitronH3 {
+    font-family: $tac-font-primary;
+    font-size: rem(14px);
+    font-weight: bold;
+  }
+
+  #tarteaucitronServices ul {
+    padding: 0;
+    margin: 0;
+
+    &::before,
+    &::after {
+      display: none !important;
+    }
+
+    li {
+      &::before,
+      &::after {
+        display: none !important;
+      }
+    }
+  }
+}
+
+a.tarteaucitronSelfLink {
+  text-align: center !important;
+  display: block;
+  padding: rem(7px) !important;
+}
+
+
+
+/**
+ * Root div added just before </body>
+ *************************************************************/
+
+#tarteaucitronRoot {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  font-family: $tac-font-default;
+  color: $tac-color-foreground;
+}
+
+#tarteaucitronRoot * {
+  line-height: normal;
+  vertical-align: initial;
+}
+
+#tarteaucitronCookiesNumberBis.tarteaucitronH2 {
+  margin-left: 0;
+}
+
+
+
+
+/**
+ * Button
+ *************************************************************/
+
+#tarteaucitronAlertBig button,
+#tarteaucitronClosePanelCookie,
+.tarteaucitronLine button,
+#tarteaucitron #tarteaucitronClosePanel {
+  padding: 1em 2em;
+  border: rem(1px) solid currentColor;
+  border-radius: 0.3em;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+
+
+
+/**
+ * Service
+ *************************************************************/
+
+  #tarteaucitron #tarteaucitronServices ul > li[id*="tarteaucitronServicesTitle_"] .tarteaucitronLine {
+    .tarteaucitronH3 {
+      margin-bottom: rem(8px);
+    }
+
+    .tarteaucitronListCookies {
+      font-size: rem(12px);
+    }
+
+    .tarteaucitronAsk {
+      margin-top: rem(16px);
+    }
+  }
+
+
+
+
+/**
+ * Services Category
+ *************************************************************/
+
+  #tarteaucitron #tarteaucitronServices .tarteaucitronBorder ul > li[id*="tarteaucitronServicesTitle_"] {
+    padding: rem(13px) rem(20px);
+    border-radius: rem(3px);
+    background-color: $tac-color-background;
+
+    .tarteaucitronDetails {
+      margin-top: rem(10px);
+      font-size: rem(12px);
+      font-weight: 500;
+    }
+
+    .tarteaucitronLine {
+      margin: rem(10px) 0 0;
+      padding: 0;
+    }
+  }
+
+
+
+
+/**
+ * Services Dialog
+ *************************************************************/
+
+#tarteaucitronBack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483646;
+  display: none;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: $tac-color-white;
+
+  @media screen and (min-width: 768px) {
+    background: rgba($tac-color-black, 0.5);
+  }
+}
+
+#tarteaucitron #tarteaucitronClosePanel {
+  background-color: $tac-color-background;
+  border-radius: 0;
+  font-size: rem(14px);
+}
+
+#tarteaucitron #tarteaucitronServices {
+  margin-top: rem(44px);
+
+  .tarteaucitronTitle button,
+  #tarteaucitronInfo,
+  .tarteaucitronDetails {
+    border: 0;
+    appearance: none;
+    color: $tac-color-foreground;
+    display: inline-block;
+    font: inherit;
+    font-size: rem(14px);
+    font-weight: 700;
+    margin: rem(20px) 0 0;
+    text-align: left;
+    width: auto;
+    background: transparent;
+    cursor: pointer;
+  }
+
+    .tarteaucitronLine {
+      overflow: hidden;
+    }
+
+  .tarteaucitronMainLine {
+    position: relative;
+    margin-bottom: 0;
+    background: $tac-color-background;
+
+    .tarteaucitronH1,
+    .tarteaucitronInfoBox,
+    .tarteaucitronName,
+    .tarteaucitronAsk {
+      padding-right: rem(20px);
+      padding-left: rem(20px);
+    }
+
+    .tarteaucitronH1 {
+      margin: 10px 0;
+    }
+
+    .tarteaucitronInfoBox {
+      margin-top: rem(10px);
+      padding-bottom: rem(20px);
+      font-weight: normal;
+    }
+
+    .tarteaucitronName,
+    .tarteaucitronAsk {
+      background-color: $tac-color-white;
+    }
+
+    .tarteaucitronName {
+      padding-top: rem(20px);
+      padding-bottom: rem(10px);
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .tarteaucitronAsk {
+      padding-bottom: rem(15px);
+    }
+  }
+
+  .tarteaucitronBorder  {
+    border-top: rem(1px) solid $tac-color-border;
+    height: auto;
+    overflow: auto;
+    background: $tac-color-white;
+
+    ul > li[id*="tarteaucitronServicesTitle_"] {
+      margin: rem(10px);
+    }
+
+    .tarteaucitronHidden {
+      display: none;
+      position: relative;
+
+      .tarteaucitronTitle {
+        font-size: rem(17px);
+        font-weight: bold;
+      }
+    }
+
+  }
+
+    .tarteaucitronAsk {
+      margin-right: rem(-2px);
+      margin-left: rem(-2px);
+
+      @media screen and (min-width: 768px) {
+        text-align: right;
+      }
+
+      button {
+        margin: rem(2px);
+      }
+
+      .tarteaucitronAllow {
+        color: $tac-color-allow;
+
+        &.is-active {
+          border-color: $tac-color-allow;
+          background-color: $tac-color-allow;
+          color: $tac-color-white;
+        }
+      }
+
+      .tarteaucitronDeny {
+        color: $tac-color-deny;
+
+        &.is-active {
+          border-color: $tac-color-deny;
+          background-color: $tac-color-deny;
+          color: $tac-color-white;
+        }
+      }
+    }
+
+      button {
+        font-size: rem(11px);
+      }
+}
+
+
+
+
+/**
+ * Big Alert
+ *************************************************************/
+ #tarteaucitronPercentage {
+  background: $tac-color-success !important;
+  height: rem(4px);
+  left: 0;
+  position: fixed;
+  width: 0;
+  z-index: 2147483644;
+ }
+
+ #tarteaucitronAlertBig {
+  position: fixed;
+  right: rem($tac-gutter-size/2);
+  left: rem($tac-gutter-size/2);
+  z-index: 2147483645;
+  display: none;
+  margin: auto;
+  padding: rem(10px);
+  background: $tac-color-alert-background;
+  color: $tac-color-alert-foreground;
+  border-radius: rem($tac-border-radius);
+  box-shadow: $tac-box-shadow;
+  font-size: rem(14px);
+  font-weight: 600;
+  text-align: center;
+
+  &.tarteaucitronAlertBigTop {
+    top: rem($tac-gutter-size/2);
+  }
+
+  &.tarteaucitronAlertBigBottom {
+    bottom: rem($tac-gutter-size/2);
+  }
+
+  #tarteaucitronDisclaimerAlert {
+    display: block;
+    margin: rem(30px) rem(10px);
+    text-align: left;
+    font-weight: normal;
+  }
+
+  #tarteaucitronPersonalize,
+  #tarteaucitronCloseAlert,
+  #tarteaucitronPrivacyUrl {
+    margin: rem(10px);
+    width: calc(100% - #{rem(20px)});
+    min-width: rem(200px);
+
+    @media (min-width: 480px) {
+      width: auto;
+    }
+  }
+
+  #tarteaucitronCloseAlert {
+    border-color: rgba($tac-color-white, 0.3);
+  }
+
+  #tarteaucitronPrivacyUrl {
+    border-color: transparent;
+    padding: rem(13px);
+  }
+
+  @media (min-width: 1000px) {
+    padding: rem($tac-alert-vertical-padding) rem(20px);
+
+    &[style*="display: block"],
+    &[style*="display:block"] {
+      align-items: center;
+      justify-content: center;
+      display: flex !important;
+    }
+
+    #tarteaucitronDisclaimerAlert {
+      max-width: rem(490px);
+      margin-right: rem(50px);
+    }
+  }
+}
+
+
+
+
+/**
+* Cookie List
+ *************************************************************/
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer .cookie-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &,
+  ul {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  li {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .tarteaucitronCookiesListMain {
+    margin: rem(10px);
+    border-radius: rem(4px);
+    background-color: $tac-color-background;
+  }
+}
+
+
+
+/**
+* Cookie Dialog
+ *************************************************************/
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer {
+  display: none;
+  max-height: 70%;
+  max-width: rem(500px);
+  position: fixed;
+  right: 0;
+  width: 100%;
+
+  #tarteaucitronClosePanelCookie {
+    background-color: $tac-color-background;
+    border-radius: 0;
+    font-size: rem(14px);
+  }
+
+  .tarteaucitronCookiesListMain {
+    background-color: $tac-color-white;
+    padding: rem(7px) rem(5px) rem(10px);
+    word-wrap: break-word;
+  }
+
+    #tarteaucitronCookiesTitle {
+      margin-top: rem(44px);
+      padding: rem(10px) rem(20px);
+      text-align: left;
+      font-size: rem(17px);
+      font-weight: bold;
+    }
+
+  #tarteaucitronCookiesList {
+    background: $tac-color-white;
+    border-top: rem(1px) solid $tac-color-border;
+    font-size: rem(11px);
+    height: auto;
+    overflow: auto;
+    text-align: left;
+
+    .tarteaucitronTitle {
+      color: $tac-color-foreground;
+      display: block;
+      font-size: rem(14px);
+      font-weight: 700;
+      margin: 0;
+      padding: rem(10px) rem(20px);
+      text-align: left;
+      width: 100%;
+      background: $tac-color-background;
+    }
+  }
+
+  @media screen and (max-width:767px) {
+    #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer {
+      border: 0;
+      bottom: 0 !important;
+      height: 100%;
+      left: 0;
+      margin: 0;
+      max-height: 100%;
+      max-width: 100%;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+
+/**
+* Small alert
+ *************************************************************/
+
+.tarteaucitronAlertSmallTop,
+.tarteaucitronAlertSmallBottom {
+  bottom: 0;
+}
+
+#tarteaucitronAlertSmall {
+  background: $tac-color-background;
+  display: none;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  width: auto;
+  z-index: 2147483646;
+  border: rem(1px) solid $tac-color-border;
+
+  #tarteaucitronManager {
+    display: inline-block;
+    padding: rem(8px) rem(10px) rem(8px);
+    border: 0;
+    background-color: transparent;
+    color: $tac-color-foreground;
+    font: inherit;
+    font-size: rem(11px) !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+  }
+
+    #tarteaucitronDot {
+      background-color: $tac-color-black;
+      border-radius: rem(5px);
+      display: block;
+      height: rem(8px);
+      margin-bottom: rem(1px);
+      margin-top: rem(5px);
+      overflow: hidden;
+      width: 100%;
+    }
+
+      #tarteaucitronDotGreen,
+      #tarteaucitronDotYellow,
+      #tarteaucitronDotRed {
+        display: block;
+        float: left;
+        height: 100%;
+        width: 0%;
+      }
+
+      #tarteaucitronDotGreen {
+        background-color: $tac-color-success;
+      }
+
+      #tarteaucitronDotYellow {
+        background-color: $tac-color-warning;
+      }
+
+      #tarteaucitronDotRed {
+        background-color: $tac-color-error;
+      }
+
+  #tarteaucitronCookiesNumber {
+    display: inline-block;
+    padding: 0 rem(10px);
+    border: 0;
+    border-left: rem(1px) solid $tac-color-border;
+    background-color: $tac-color-white;
+    color: inherit;
+    font-size: rem(30px);
+    vertical-align: top;
+    cursor: pointer;
+  }
+}
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft {
+  display: inline-block;
+  width: 50%;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a strong {
+  color: $tac-color-error;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListRight {
+  display: inline-block;
+  font-size: rem(11px);
+  margin-left: 10%;
+  vertical-align: top;
+  width: 30%;
+}
+
+
+
+
+/**
+ * Close button
+ *************************************************************/
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronClosePanelCookie,
+#tarteaucitron #tarteaucitronClosePanel {
+  border: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  width: 100%;
+}
+
+
+
+
+/**
+ * Tarteaucitron
+ *************************************************************/
+
+#tarteaucitron {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2147483647;
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  border: 0;
+
+  @media screen and (max-width: 767px) {
+    top: 0 !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    top: 0;
+    left: 0;
+    max-height: 80%;
+    max-width: 90%;
+    margin: 0 5%;
+  }
+
+  @media screen and (min-width: 992px) {
+    top: 6%;
+    left: 50%;
+    max-width: rem(860px);
+    margin: 0 auto 0 rem(-430px);
+  }
+}
+
+
+
+
+
+/**
+ * Fallback activate link - TODO
+ *************************************************************/
+.tac_activate {
+  background: $tac-color-background;
+  color: $tac-color-foreground;
+  display: table;
+  font-size: rem(12px);
+  height: 100%;
+  line-height: initial;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.tac_float {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tac_activate .tac_float strong {
+  color: $tac-color-white;
+}
+
+.tac_activate .tac_float .tarteaucitronAllow {
+  background-color: $tac-color-success;
+  display: inline-block;
+}
+
+
+
+
+/**
+ * CSS for services
+ *************************************************************/
+
+ins.ferank-publicite, ins.adsbygoogle {
+  text-decoration: none;
+}
+
+div.amazon_product {
+  height: rem(240px);
+  width: rem(120px);
+}
+div#tarteaucitronInfo {
+  display: block !important;
+  position: initial !important;
+}
+
+a.tarteaucitronSelfLink {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding-top: rem(13px)!important;
+  display: block;
+  text-shadow: 0 0 rem(14px) white;
+  text-transform: uppercase;
+}

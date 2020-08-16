@@ -1,0 +1,84 @@
+/**********************************************************************************
+ * SPACINGS - UTILITIES
+ **********************************************************************************/
+
+
+/**
+ * Variables
+ **********************************************************************************/
+
+// Baseline grid lines height.
+// Every spacing metric should be based on this.
+
+// How many grid lines should our spacing unit variants span?
+// Each value should be an unitless integer.
+
+$spacing-unit-factor-tiny:      0.25 !default; // 4px
+$spacing-unit-factor-small:     0.5 !default;  // 8px
+$spacing-unit-factor:           1 !default;    // 16px
+$spacing-unit-factor-large:     2 !default;    // 32px
+$spacing-unit-factor-huge:      4 !default;    // 64px
+
+// Spacing values are determined based on your project’s global baseline grid.
+// It is not recommended that you modify these following variables
+// (it can break your vertical rhythm), but if you need to, you can.
+
+$spacing-unit:       $baseline * $spacing-unit-factor !default;
+$spacing-unit-tiny:  $baseline * $spacing-unit-factor-tiny !default;
+$spacing-unit-small: $baseline * $spacing-unit-factor-small !default;
+$spacing-unit-large: $baseline * $spacing-unit-factor-large !default;
+$spacing-unit-huge:  $baseline * $spacing-unit-factor-huge !default;
+
+/**
+ * Utility classes to put specific spacing values onto elements. The below loop
+ * will generate us a suite of classes like:
+ *
+ *   .u-margin-top {}
+ *   .u-padding-left-large {}
+ *   .u-margin-right-small {}
+ *   .u-padding {}
+ *   .u-padding-right-none {}
+ *   .u-padding-horizontal {}
+ *   .u-padding-vertical-small {}
+ */
+
+ $spacing-directions: (
+  null: null,
+  "-top": "-top",
+  "-right": "-right",
+  "-bottom": "-bottom",
+  "-left": "-left",
+  "-horizontal": "-left" "-right",
+  "-vertical": "-top" "-bottom",
+) !default;
+
+$spacing-properties: (
+  "padding": "padding",
+  "margin": "margin",
+) !default;
+
+$spacing-sizes: (
+  null: $spacing-unit,
+  "-tiny": $spacing-unit-tiny,
+  "-small": $spacing-unit-small,
+  "-large": $spacing-unit-large,
+  "-huge": $spacing-unit-huge,
+  "-none": 0
+) !default;
+
+
+/**
+ * Styles
+ **********************************************************************************/
+
+@each $property-namespace, $property in $spacing-properties {
+  @each $direction-namespace, $direction-rules in $spacing-directions {
+    @each $size-namespace, $size in $spacing-sizes {
+      .u-#{$property-namespace}#{$direction-namespace}#{$size-namespace} {
+        @each $direction in $direction-rules {
+          #{$property}#{$direction}: $size !important;
+        }
+      }
+    }
+  }
+}

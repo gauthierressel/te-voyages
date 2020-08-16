@@ -1,0 +1,41 @@
+/**********************************************************************************
+ * SETTINGS
+ * Name : Vendors
+ *
+ * The vendors settings file contains any variables needed in external
+ * librairies
+ **********************************************************************************/
+
+
+/**
+ * Sass-rem
+ **********************************************************************************/
+
+$rem-baseline: $font-size;
+$rem-fallback: false;
+$rem-px-only: true;
+
+
+/**
+ * Sass-mq
+ **********************************************************************************/
+
+// $mq-breakpoints: (
+//   "tiny": 460px,
+//   "small": 620px,
+//   "regular": 780px,
+//   "large": 960px,
+//   "huge": 1350px
+// );
+
+
+/**
+ * Tarteaucitron
+ **********************************************************************************/
+
+$tac-font-default: inherit;
+$tac-font-primary: inherit;
+$tac-color-background: $color-foreground;
+$tac-color-foreground: $color-foreground;
+$tac-color-alert-background: $color-background;
+$tac-color-alert-foreground: $color-foreground;

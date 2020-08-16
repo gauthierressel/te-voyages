@@ -1,0 +1,15 @@
+{
+  "name": "souffle",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "aos": "^2.3.4",
+    "focus-visible": "5.0.2",
+    "jquery": "3.4.1",
+    "reset-css": "5.0.1",
+    "sass-em": "1.0.3",
+    "sass-mq": "3.3.2",
+    "sass-rem": "1.2.4",
+    "svg4everybody": "2.1.9"
+  }
+}

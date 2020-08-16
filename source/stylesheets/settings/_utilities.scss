@@ -1,0 +1,133 @@
+/**********************************************************************************
+ * SETTINGS
+ * Name : Utilities
+ **********************************************************************************/
+
+
+/**
+ * Widths
+ **********************************************************************************/
+
+// $fractions: 1 2 3;
+// $offsets: false;
+// $widths-delimiter: \/;
+// $widths-breakpoint-separator: \@;
+
+$widths-breakpoints: (
+  // "tiny": 460px,
+  // "small": 620px,
+  // "regular": 780px,
+  // "large": 960px,
+  // "huge": 1350px
+);
+
+
+/**
+ * Spacings units
+ **********************************************************************************/
+
+// How many grid lines should our spacing unit variants span?
+// Each value should be an unitless integer.
+
+// $spacing-unit-factor-tiny:      0.25; // 4px
+// $spacing-unit-factor-small:     0.5;  // 8px
+// $spacing-unit-factor:           1;    // 16px
+// $spacing-unit-factor-large:     2;    // 32px
+// $spacing-unit-factor-huge:      4;    // 64px
+
+// Spacing values are determined based on your project’s global baseline grid.
+// It is not recommended that you modify these following variables
+// (it can break your vertical rhythm), but if you need to, you can.
+
+// $spacing-unit:       $baseline * $spacing-unit-factor;
+// $spacing-unit-tiny:  $baseline * $spacing-unit-factor-tiny;
+// $spacing-unit-small: $baseline * $spacing-unit-factor-small;
+// $spacing-unit-large: $baseline * $spacing-unit-factor-large;
+// $spacing-unit-huge:  $baseline * $spacing-unit-factor-huge;
+
+
+/**
+ * Spacings
+ **********************************************************************************/
+
+$spacing-directions: (
+  // null: null,
+  // "-top": "-top",
+  // "-right": "-right",
+  // "-bottom": "-bottom",
+  // "-left": "-left",
+  // "-horizontal": "-left" "-right",
+  // "-vertical": "-top" "-bottom",
+);
+
+$spacing-properties: (
+  // "padding": "padding",
+  // "margin": "margin",
+);
+
+$spacing-sizes: (
+  // null: $spacing-unit,
+  // "-tiny": $spacing-unit-tiny,
+  // "-small": $spacing-unit-small,
+  // "-large": $spacing-unit-large,
+  // "-huge": $spacing-unit-huge,
+  // "-none": 0
+);
+
+
+/**
+ * Responsive spacings
+ **********************************************************************************/
+
+$responsive-spacing-directions: (
+  // null: null,
+  // "-top": "-top",
+  // "-right": "-right",
+  // "-bottom": "-bottom",
+  // "-left": "-left",
+  // "-horizontal": "-left" "-right",
+  // "-vertical": "-top" "-bottom",
+);
+
+$responsive-spacing-properties: (
+  // "padding": "padding",
+  // "margin": "margin",
+);
+
+$responsive-spacing-sizes: (
+  // null: $spacing-unit,
+  // "-tiny": $spacing-unit-tiny,
+  // "-small": $spacing-unit-small,
+  // "-large": $spacing-unit-large,
+  // "-huge": $spacing-unit-huge,
+  // "-none": 0
+);
+
+$responsive-spacing-breakpoints: (
+  // "tiny": 460px,
+  // "small": 620px,
+  // "regular": 780px,
+  // "large": 960px,
+  // "huge": 1350px
+);
+
+
+/**
+ * Colors
+ **********************************************************************************/
+
+$colors-variants: (
+  // "-inherit": "inherit",
+  // "-black": $color-white,
+  // "-white": $color-white,
+  // "-primary": $color-primary,
+  // "-secondary": $color-secondary,
+  // "-error": $color-error,
+  // "-success": $color-success,
+);
+
+$colors-properties: (
+  // "border": "border-color",
+  // "background": "background-color",
+  // "color": "color",
+);

@@ -1,0 +1,20 @@
+/**********************************************************************************
+ * TOOLS
+ * Name: Icons
+ * Description: Icon functions
+ **********************************************************************************/
+
+/*
+  Get an SVG URL with wanted color
+*/
+@function icon($icon, $color) {
+  @return inline-svg(str-replace($icon, "%color%", $color));
+}
+
+/*
+  Format the SVG as an URL
+  @link https://gist.github.com/JacobDB/0ffffaf8e772c12acf7102edb8a302be
+*/
+@function inline-svg($string) {
+  @return url("data:image/svg+xml,#{url-encode($string)}");
+}

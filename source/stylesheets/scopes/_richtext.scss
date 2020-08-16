@@ -1,0 +1,139 @@
+/**********************************************************************************
+ * SCOPES
+ * Name : Richtext
+ **********************************************************************************/
+
+
+/**
+ * Styles
+ **********************************************************************************/
+
+.s-richtext {
+
+  > * {}
+
+  h2 {
+    @extend .c-title;
+
+    &:not(:first-child) {
+      @include rem(margin-top, $gutter-size*2);
+    }
+  }
+
+  h3 {
+    @extend .c-subtitle;
+
+    &:not(:first-child) {
+      @include rem(margin-top, $gutter-size*1.5);
+    }
+  }
+
+  p {
+
+    &:not(:first-child) {
+      @include rem(margin-top, $gutter-size);
+    }
+
+    a {
+      text-decoration: underline;
+      color: $color-primary;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  ul,
+  ol {
+
+    &:not(:first-child) {
+      @include rem(margin-top, $gutter-size);
+    }
+
+    li {
+      position: relative;
+      @include rem(padding-left, $gutter-size*2);
+
+      &:not(:first-child) {
+        @include rem(margin-top, $gutter-size/2);
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+      }
+    }
+  }
+
+  ul {
+
+    li {
+
+      &:before {
+        @include rem(width, 6px);
+        @include rem(height, 6px);
+        @include rem(top, 13px);
+        @include rem(left, 13px);
+        background-color: $color-primary;
+        @include rem(border-radius, 3px);
+      }
+    }
+  }
+
+  ol {
+    counter-reset: orderedlist;
+
+    li {
+      counter-increment: orderedlist;
+
+      &:before {
+        content: counter(orderedlist) ".";
+        top: 0;
+        @include rem(left, $gutter-size/2);
+        font-family: $font-secondary;
+        font-weight: $font-bold;
+        color: $color-primary;
+      }
+    }
+  }
+
+  blockquote {
+    @include rem(padding-left, $gutter-size*3);
+    @include font-size(24px, 28px);
+    font-style: italic;
+
+    &:not(:first-child) {
+      @include rem(margin-top, $gutter-size);
+    }
+
+    &:not(:last-child) {
+      @include rem(margin-bottom, $gutter-size);
+    }
+
+    * {
+      @include font-size(24px, 28px);
+    }
+  }
+}
+
+
+/**
+ * Print
+ **********************************************************************************/
+
+// @media print {
+//   .s-richtext {
+//     a[href]::after {
+//       content: " [" attr(href) "]";
+//       font-style: italic;
+//       opacity: 0.5;
+//     }
+
+//     abbr[title]::after {
+//       content: " [" attr(title) "]";
+//       font-style: italic;
+//       opacity: 0.5;
+//     }
+//   }
+// }

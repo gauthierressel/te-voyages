@@ -1,0 +1,19 @@
+/**********************************************************************************
+ * TOOLS
+ * Name : Clearfix
+ **********************************************************************************/
+
+// Mixin to drop micro clearfix into a selector. Further reading:
+// @link http://www.cssmojo.com/the-very-latest-clearfix-reloaded/
+//
+// .usage {
+//   @include clearfix();
+// }
+
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}

@@ -1,0 +1,59 @@
+/**********************************************************************************
+ * TOOLS
+ * Name : Fonts
+ **********************************************************************************/
+
+// Init font folder
+$font-folder: "../fonts/front/";
+
+// Generate font-face
+@mixin font-face($font-family, $file-name, $weight: normal, $style: normal, $id: $font-family, $suffix: "-webfont") {
+  @font-face {
+    font-display: swap;
+    font-family: $font-family;
+    font-style: $style;
+    font-weight: $weight;
+    src: url("#{$font-folder}#{$file-name}#{$suffix}.woff");
+    src:
+      url("#{$font-folder}#{$file-name}#{$suffix}.woff2")  format("woff2"),
+      url("#{$font-folder}#{$file-name}#{$suffix}.woff")   format("woff");
+  }
+}
+
+// Create rem base font-size with line-height
+@mixin font-size($font-size: $font-size, $line-height: auto) {
+  @include rem(font-size, $font-size);
+
+  @if $line-height == auto {
+    line-height: ceil($font-size / $line-height-px) * ($line-height-px / $font-size);
+  }
+  @else if type-of($line-height) == number or $line-height == inherit or $line-height == normal {
+    @if type-of($line-height) == number and unit($line-height) == px {
+      line-height: $line-height / $font-size;
+    }
+    @else {
+      line-height: $line-height;
+    }
+  }
+}
+
+// Create responsive font-size
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size, $relative-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+  $u5: unit($relative-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media (min-width: $min-vw) {
+        font-size: calc(#{ em($min-font-size, $relative-font-size) } + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}

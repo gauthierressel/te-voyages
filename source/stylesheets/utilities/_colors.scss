@@ -1,0 +1,44 @@
+/**********************************************************************************
+ * COLORS - UTILITIES
+ **********************************************************************************/
+
+
+/**
+ * Variables
+ **********************************************************************************/
+
+$colors-properties: (
+  "border": "border-color",
+  "background": "background-color",
+  "color": "color",
+) !default;
+
+$colors-variants: () !default;
+
+
+/**
+ * Styles
+ **********************************************************************************/
+
+@each $selector, $property in $colors-properties {
+  @each $color, $value in $colors-variants {
+    .u-#{$selector}#{$color} {
+      #{$property}: $value !important;
+    }
+  }
+}
+
+
+/**
+ * Print
+ **********************************************************************************/
+
+@media print {
+  [class*="u-background-"] {
+    background-color: $color-white !important;
+  }
+
+  [class*="u-color-"] {
+    color: $color-black !important;
+  }
+}

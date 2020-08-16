@@ -1,0 +1,47 @@
+/**********************************************************************************
+ * SHARED
+ **********************************************************************************/
+
+
+@import "tools/fonts";
+
+
+/**
+ * Settings
+ **********************************************************************************/
+
+@import "settings/fonts";
+@import "settings/colors";
+@import "settings/layouts";
+@import "settings/animations";
+@import "settings/utilities";
+@import "settings/vendors";
+
+
+/**
+ * Tools
+ **********************************************************************************/
+
+@import "vendors/rem";
+@import "vendors/em";
+@import "vendors/mq";
+@import "vendors/slick";
+@import "vendors/aos";
+@import "tools/animations";
+@import "tools/appearance";
+@import "tools/clearfix";
+@import "tools/colors";
+@import "tools/global";
+@import "tools/hidden";
+// @import "tools/icons";
+// @import "tools/maps";
+// @import "tools/strings";
+// @import "tools/types";
+
+
+/**
+ * Core
+ **********************************************************************************/
+
+@import "vendors/reset";
+@import "core";

@@ -1,0 +1,17 @@
+/**********************************************************************************
+ * TOOLS
+ * Name : Hidden
+ **********************************************************************************/
+
+// Mixin to quickly apply accessible hiding to elements.
+// @link https://a11yproject.com/posts/how-to-hide-content/
+
+@mixin hidden-visually() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap; /* added line */
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}

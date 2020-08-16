@@ -1,0 +1,19 @@
+/**********************************************************************************
+ * TOOLS
+ * Name: Animations
+ **********************************************************************************/
+
+/*
+  Declare transitions more easily.
+  Usage :
+    @include transition(transform);
+    @include transition(background color transform, 0.5s, ease-out, 0.25s);
+*/
+@mixin transition($properties, $duration: $animation-duration, $easing: $animation-easing, $delay: 0s) {
+  $r: "";
+  @each $property in $properties {
+    $r: $r + "#{$property} #{$duration} #{$easing} #{$delay}, ";
+  }
+
+  transition: str-slice(#{$r}, 0, -3);
+}

@@ -1,0 +1,18 @@
+/**
+ * COMPONENTS
+ * Name : Button
+ ************************************************************ */
+
+.c-button {
+  @include appearance;
+  position: relative;
+
+  &:hover {}
+}
+
+
+/**
+ * Types
+ ****************************** */
+
+.c-button-- {}

@@ -1,0 +1,33 @@
+doctype html
+html
+
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    / Use the title from a page's frontmatter if it has one
+    title= current_page.data.title || "Middleman"
+    = stylesheet_link_tag "site"
+
+
+  body(class=body_class)
+
+
+    / Header
+    = partial "layouts/partials/header"
+
+
+    / Main
+    main.l-main
+      = yield
+
+
+    / Footer
+    = partial "layouts/partials/footer"
+
+
+    / Foot
+    = javascript_include_tag "vendors/jquery.min.js"
+    = javascript_include_tag "vendors/slick.min.js"
+    = javascript_include_tag "vendors/aos.min.js"
+    = javascript_include_tag "site"

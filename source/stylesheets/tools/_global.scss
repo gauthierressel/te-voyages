@@ -1,0 +1,29 @@
+/**********************************************************************************
+ * TOOLS
+ * Name: Global
+ *
+ * Description:
+ * Global mixins, functions or placeholders used through the entire codebase,
+ * but not specific enough to be defined under it's own scope.
+ *
+ **********************************************************************************/
+
+/*
+  Customize the scrollbar for webkit browsers
+*/
+@mixin global-custom-scrollbar() {
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: rem(5px);
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: rem(3px);
+    background-color: $color-black;
+  }
+}

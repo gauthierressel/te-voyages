@@ -1,0 +1,26 @@
+/**********************************************************************************
+ * SKIP CONTENT - UTILITIES
+ **********************************************************************************/
+
+
+/**
+ * Styles
+ **********************************************************************************/
+
+.u-skip-content {
+  position: absolute;
+  top: rem(5px);
+  left: 50%;
+  z-index: 1000;
+  min-width: rem(240px);
+  padding: 1em;
+  background-color: $color-black;
+  color: $color-white;
+  font-weight: $font-bold;
+  text-decoration: none;
+  transform: translateX(-50%) translateY(-500%);
+
+  &:focus {
+    transform: translateX(-50%) translateY(0);
+  }
+}

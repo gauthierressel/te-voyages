@@ -1,0 +1,37 @@
+/**
+ * COMPONENTS
+ * Name : Navigation
+ ************************************************************ */
+
+
+.c-navigation {
+  position: relative;
+}
+
+
+  /**
+   * Items
+   ****************************** */
+
+  .c-navigation__items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+
+    /**
+     * Item
+     ****************************** */
+
+    .c-navigation__item {
+      position: relative;
+    }
+
+
+      /**
+       * Link
+       ****************************** */
+
+      .c-navigation__link {}

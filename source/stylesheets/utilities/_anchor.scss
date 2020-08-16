@@ -1,0 +1,26 @@
+/**********************************************************************************
+ * ANCHOR - UTILITIES
+ *
+ * Used to apply header gutter to anchor for sticky or fixed header
+ **********************************************************************************/
+
+
+/**
+ * Variables
+ **********************************************************************************/
+
+$header-height: 80px !default;
+
+
+/**
+ * Styles
+ **********************************************************************************/
+
+.u-anchor {
+  &::before {
+    content: "";
+    display: block;
+    height: rem($header-height);
+    margin-top: rem(-$header-height);
+  }
+}
