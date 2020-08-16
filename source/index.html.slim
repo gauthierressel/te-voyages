@@ -12,6 +12,10 @@ title: TE Voyages
 / HEAD
 .l-main__head
   = "head"
+  ul
+    - for travel in dato.travels do
+      - travel_slug = (travel.title).slugify
+      = link_to travel.title, "/voyages/#{travel_slug}/index.html"
 
 
 / BODY

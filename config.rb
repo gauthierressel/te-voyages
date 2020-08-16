@@ -3,10 +3,10 @@ activate :livereload
 activate :directory_indexes
 activate :dato, live_reload: true
 
-# dato.references.each do |reference|
-#   reference_slug = (reference.client + " " + reference.short_description).slugify
-#   proxy "/realisations/#{reference_slug}/index.html", "/realisation.html", :locals => { :reference => reference }
-# end
+dato.travels.each do |travel|
+  travel_slug = (travel.title).slugify
+  proxy "/voyages/#{travel_slug}/index.html", "/voyage.html", :locals => { :travel => travel }
+end
 
 # enable livereload on development
 # configure :development do
