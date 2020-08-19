@@ -47,26 +47,24 @@ title: Étape | TE Voyages
     .l-main__section
       .l-container
 
-        - next_title = ""
-        - is_next = false
-
-        - stage.travel.stages.each do |st|
-
-          - if is_next == true
-            - next_title = st.title
-            - is_next = false
-
-          - if st.id == stage.id
-            - is_next = true
-
-    .l-main__section
-      .l-container
-
         .c-next
 
-          .c-next__head
-            = link_to "https://www.google.com/maps/search/?api=1&query=#{stage.location.latitude},#{stage.location.longitude}", :target => "_blank", :class => "c-next__map"
-              = image_tag "https://maps.googleapis.com/maps/api/staticmap?size=320x320&format=JPG&language=fr&markers=size:small|#{stage.location.latitude},#{stage.location.longitude}&zoom=7&key=AIzaSyBSaiEyedIMnqLQytBBEnIs2LKkL2hqeD4", :class => "c-next__picture"
+          - if defined?(stage.location.latitude) and defined?(stage.location.longitude)
+            .c-next__head
+              = link_to "https://www.google.com/maps/search/?api=1&query=#{stage.location.latitude},#{stage.location.longitude}", :target => "_blank", :class => "c-next__map"
+                = image_tag "https://maps.googleapis.com/maps/api/staticmap?size=320x320&format=JPG&language=fr&markers=size:small|#{stage.location.latitude},#{stage.location.longitude}&zoom=7&key=AIzaSyBSaiEyedIMnqLQytBBEnIs2LKkL2hqeD4", :class => "c-next__picture"
+
+          - next_title = ""
+          - is_next = false
+
+          - stage.travel.stages.each do |st|
+
+            - if is_next == true
+              - next_title = st.title
+              - is_next = false
+
+            - if st.id == stage.id
+              - is_next = true
 
           - if next_title != ""
             - next_slug = (next_title).slugify
