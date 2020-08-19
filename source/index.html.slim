@@ -2,27 +2,108 @@
 title: TE Voyages
 ---
 
-- body_class "homepage"
+- body_class "page-home"
+
+  
+/ Variables
+- continue     = true
+- current_date = Time.now.strftime("%Y%m%d")
+- travel_id    = false
 
 
-/ UTIL:
-/ = image_tag dato.homepage.training_picture.url({ w: 200, h: 100, fit: 'crop', crop: 'center' }), :class => 'c-manifest__picture'
+/ Get current travel
+- for travel in dato.travels.sort_by{|item| item.start }.reverse.each do
+  - travel_start = travel.start.strftime("%Y%m%d")
+  - travel_end   = travel.end.strftime("%Y%m%d")
+
+  - if continue and (current_date >= travel_start and current_date <= travel_end)
+    - travel_id   = travel.id
+    - travel_type = "current"
+    - continue    = false
+
+
+/ Get next travel
+- if continue
+  - for travel in dato.travels.sort_by{|item| item.start }.each do
+    - travel_start = travel.start.strftime("%Y%m%d")
+
+    - if continue == true and (travel_start > current_date)
+      - travel_id   = travel.id
+      - travel_type = "next"
+      - continue    = false
 
 
 / HEAD
-.l-main__head
-  = "head"
-  ul
-    - for travel in dato.travels do
-      - travel_slug = (travel.title).slugify
-      = link_to travel.title, "/voyages/#{travel_slug}/index.html"
+- if travel_id
+  - highlight_travel = dato.travels[travel_id]
+  - travel_slug      = (highlight_travel.title).slugify
+
+  .l-main__head
+
+    .l-main__section
+      .l-container.l-container--small
+        .l-main__title
+          - if travel_type == "current"
+            = "Voyage en cours !"
+          - elsif travel_type == "next"
+            = "Prochain voyage"
+
+    .l-main__section
+      .l-container
+        .c-highlight
+          = link_to "/voyages/#{travel_slug}/", :class => "c-highlight__link" do
+            .c-highlight__head
+              = image_tag highlight_travel.picture.url({ w: 960, h: 450, fit: "crop", crop: "center" }), :class => "c-highlight__picture c-highlight__picture--large"
+              = image_tag highlight_travel.picture.url({ w: 480, h: 400, fit: "crop", crop: "center" }), :class => "c-highlight__picture c-highlight__picture--small"
+            .c-highlight__body
+              .c-highlight__title.c-title= highlight_travel.title
+              .c-highlight__description
+                strong
+                  = period(highlight_travel.start, highlight_travel.end)
+                br
+                span
+                  = highlight_travel.country
+                  = ", "
+                  = highlight_travel.continent
+
 
 
 / BODY
 .l-main__body
-  = "body"
 
+  .l-main__section
+    .l-container.l-container--small
+      .l-main__title= "Derniers voyages"
 
-/ FOOT
-.l-main__foot
-  = "foot"
+  .l-main__section
+    .l-container
+      .l-grid.l-grid--halves
+        .l-grid__items
+          - for travel in dato.travels.sort_by{|item| item.start }.reverse.each do
+            - travel_start = travel.start.strftime("%Y%m%d")
+            - if travel_start < current_date
+
+              .l-grid__item
+                - travel_slug = (travel.title).slugify
+
+                .c-card
+                  = link_to "/voyages/#{travel_slug}/", :class => "c-card__link" do
+
+                    - if travel.picture
+                      .c-card__head
+                        = image_tag travel.picture.url({ w: 380, h: 380, fit: "crop", crop: "center" }), :class => "c-card__picture"
+
+                    .c-card__body
+                      .c-card__title.c-title.c-title--small= travel.title
+                      p.c-card__description
+                        strong
+                          = period(travel.start, travel.end)
+                        br
+                        span
+                          = travel.country
+                          = ", "
+                          = travel.continent
+
+  .l-main__section.l-main__section--center
+    .l-container.l-container--small
+      = link_to "Voir tous les voyages", "/voyages/", :class => "c-button"

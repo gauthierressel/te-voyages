@@ -1,0 +1,82 @@
+---
+title: Étape | TE Voyages
+---
+
+- body_class "page-stage"
+
+
+- if defined?(stage)
+
+  - travel_slug = (stage.travel.title).slugify
+
+  .l-main__head
+
+    .l-main__section
+      .l-container
+
+        .c-stage
+          .c-stage__label= date(stage.date)
+          .c-stage__heading
+            .c-stage__title.c-title.c-title--small= stage.title
+          .c-stage__travel
+            .c-stage__box
+              = image_tag stage.travel.picture.url({ w: 50, h: 50, fit: "crop", crop: "center" }), :class => "c-stage__thumbnail"
+              .c-stage__content
+                .c-stage__subtitle
+                  = link_to stage.travel.title, "/voyages/#{travel_slug}/", :class => "c-stage__link"
+                .c-stage__description
+                  = period(stage.travel.start, stage.travel.end)
+                  = " - "
+                  = stage.travel.country
+                  = ", "
+                  = stage.travel.continent
+
+
+  .l-main__body
+
+    .l-main__section
+      .l-container
+
+        .l-blocks
+          - for record in stage.content do
+            = partial "blocks/#{record.item_type.api_key}", :locals => { :record => record }
+
+
+  .l-main__foot
+
+    .l-main__section
+      .l-container
+
+        - next_title = ""
+        - is_next = false
+
+        - stage.travel.stages.each do |st|
+
+          - if is_next == true
+            - next_title = st.title
+            - is_next = false
+
+          - if st.id == stage.id
+            - is_next = true
+
+    .l-main__section
+      .l-container
+
+        .c-next
+
+          .c-next__head
+            = link_to "https://www.google.com/maps/search/?api=1&query=#{stage.location.latitude},#{stage.location.longitude}", :target => "_blank", :class => "c-next__map"
+              = image_tag "https://maps.googleapis.com/maps/api/staticmap?size=320x320&format=JPG&language=fr&markers=size:small|#{stage.location.latitude},#{stage.location.longitude}&zoom=7&key=AIzaSyBSaiEyedIMnqLQytBBEnIs2LKkL2hqeD4", :class => "c-next__picture"
+
+          - if next_title != ""
+            - next_slug = (next_title).slugify
+            .c-next__body
+              = link_to "/voyages/#{travel_slug}/#{next_slug}/", :class => "c-next__link" do
+                .c-next__label= "Étape suivante"
+                .c-next__title.c-title.c-title--small.c-title--secondary= next_title
+
+    .l-main__section.l-main__section--center
+      .l-container
+
+        .l-main__back
+          = link_to "‹ Retour au voyage", "/voyages/#{travel_slug}/", :class => "c-button"

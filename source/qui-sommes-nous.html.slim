@@ -5,20 +5,20 @@ title: Qui sommes-nous ? | TE Voyages
 - body_class "page-about"
 
 
-/ UTIL:
-/ = image_tag dato.homepage.training_picture.url({ w: 200, h: 100, fit: 'crop', crop: 'center' }), :class => 'c-manifest__picture'
-
-
 / HEAD
 .l-main__head
-  h1= dato.about.title
+
+  .l-main__section.l-main__section--center
+    .l-container.l-container--small
+      h1.c-title= dato.about.title
 
 
 / BODY
 .l-main__body
-  = "body"
 
+  .l-main__section
+    .l-container
 
-/ FOOT
-.l-main__foot
-  = "foot"
+      .l-blocks
+        - for record in dato.about.content do
+          = partial "blocks/#{record.item_type.api_key}", :locals => { :record => record }

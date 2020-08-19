@@ -1,0 +1,118 @@
+/**
+ * COMPONENTS
+ * Name : Highlight
+ ************************************************************ */
+
+
+.c-highlight {
+  position: relative;
+}
+
+
+  /**
+   * Link
+   ****************************** */
+
+  .c-highlight__link {
+    display: block;
+  }
+
+
+    /**
+     * Head
+     ****************************** */
+
+    .c-highlight__head {
+      position: relative;
+      z-index: 1;
+
+      @include mq($until: medium) {
+
+        .l-container & {
+          @include rem(margin-right, -$gutter-size);
+          @include rem(margin-left, -$gutter-size);
+        }
+      }
+    }
+
+      .c-highlight__picture {
+        display: block;
+        transition: box-shadow 0.4s ease, transform 0.4s ease;
+
+        .c-highlight__link:hover & {
+          transform: translate3d(0, -$gutter-size/2, 0);
+          @include rem(box-shadow, 0 20px 40px rgba($color-black, 0.25));
+        }
+      }
+
+      .c-highlight__picture--large {
+
+        @include mq($until: small) {
+          display: none;
+        }
+      }
+
+      .c-highlight__picture--small {
+
+        @include mq($from: small) {
+          display: none;
+        }
+      }
+
+
+    /**
+     * Body
+     ****************************** */
+
+    .c-highlight__body {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+
+      &:not(:first-child) {
+
+        @include mq($until: small) {
+          @include rem(margin-top, -$gutter-size);
+        }
+
+        @include mq($from: small, $until: medium) {
+          @include rem(margin-top, -$gutter-size*1.75);
+        }
+
+        @include mq($from: medium, $until: large) {
+          @include rem(margin-top, -$gutter-size*2.25);
+        }
+
+        @include mq($from: large) {
+          @include rem(margin-top, -$gutter-size*3);
+        }
+      }
+    }
+
+      .c-highlight__title {
+
+        .c-highlight__link:hover & {
+
+          &:after {
+            transform: rotate(1deg) scale(1);
+          }
+        }
+      }
+
+      .c-highlight__description {
+
+        @include mq($until: medium) {
+          @include font-size(14px, 20px);
+
+          &:not(:first-child) {
+            @include rem(margin-top, $gutter-size/2);
+          }
+        }
+
+        @include mq($from: medium) {
+
+          &:not(:first-child) {
+            @include rem(margin-top, $gutter-size);
+          }
+        }
+      }

@@ -1,3 +1,12 @@
 footer.l-footer
-  .l-container.l-container--large
+  .l-container
     .l-footer__container
+
+      .l-footer__aside
+        = image_tag dato.about.picture.url({ w: 300, h: 300, fit: "crop", crop: "center" }), :class => "l-footer__picture"
+
+      .l-footer__main
+        .l-footer__content
+          = dato.about.summary
+        .l-footer__more
+          = link_to "En savoir plus", "/qui-sommes-nous/", :class => "c-button c-button--white"

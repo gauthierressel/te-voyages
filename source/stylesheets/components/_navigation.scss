@@ -18,6 +18,21 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+
+    @include mq($until: small) {
+      @include rem(margin-right, -$gutter-size/2);
+      @include rem(margin-left, -$gutter-size/2);
+    }
+
+    @include mq($from: small, $until: large) {
+      @include rem(margin-right, -$gutter-size);
+      @include rem(margin-left, -$gutter-size);
+    }
+
+    @include mq($from: large) {
+      @include rem(margin-right, -$gutter-size*1.5);
+      @include rem(margin-left, -$gutter-size*1.5);
+    }
   }
 
 
@@ -27,6 +42,11 @@
 
     .c-navigation__item {
       position: relative;
+
+      @include mq($from: large) {
+        @include rem(padding-right, $gutter-size/2);
+        @include rem(padding-left, $gutter-size/2);
+      }
     }
 
 
@@ -34,4 +54,69 @@
        * Link
        ****************************** */
 
-      .c-navigation__link {}
+      .c-navigation__link {
+        position: relative;
+        display: block;
+        font-weight: $font-bold;
+
+        &:before {
+          content: '';
+          position: absolute;
+          @include rem(width, 36px);
+          @include rem(height, 36px);
+          top: 50%;
+          background-color: $color-primary;
+          @include rem(border-radius, 18px);
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          transform: translate3d(0, -50%, 0) scale(0.2);
+          opacity: 0;
+          z-index: -1;
+
+          body.page-travels .c-navigation__item[data-page="travels"] &,
+          body.page-stage .c-navigation__item[data-page="travels"] &,
+          body.page-weekends .c-navigation__item[data-page="weekends"] &,
+          body.page-videos .c-navigation__item[data-page="videos"] &,
+          body.page-about .c-navigation__item[data-page="about"] & {
+            background-color: $color-secondary;
+          }
+        }
+
+        &:hover,
+        &:focus,
+        body.page-travels .c-navigation__item[data-page="travels"] &,
+        body.page-stage .c-navigation__item[data-page="travels"] &,
+        body.page-weekends .c-navigation__item[data-page="weekends"] &,
+        body.page-videos .c-navigation__item[data-page="videos"] &,
+        body.page-about .c-navigation__item[data-page="about"] & {
+
+          &:before {
+            transform: translate3d(0, -50%, 0) scale(1);
+            opacity: 1;
+          }
+        }
+
+        @include mq($until: small) {
+          @include rem(padding, $gutter-size/4 $gutter-size/2);
+          @include font-size(12px, 15px);
+
+          &:before {
+            @include rem(left, $gutter-size/4);
+          }
+        }
+
+        @include mq($from: small) {
+          @include font-size(14px, 20px);
+
+          &:before {
+            @include rem(left, $gutter-size/2);
+          }
+        }
+
+        @include mq($from: small, $until: large) {
+          @include rem(padding, $gutter-size/4 $gutter-size);
+        }
+
+        @include mq($from: large) {
+          @include rem(padding, $gutter-size/2 $gutter-size);
+        }
+      }

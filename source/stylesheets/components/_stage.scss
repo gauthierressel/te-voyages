@@ -1,0 +1,153 @@
+/**
+ * COMPONENTS
+ * Name : Stage
+ ************************************************************ */
+
+
+.c-stage {
+  position: relative;
+  text-align: center;
+}
+
+
+  /**
+   * Label
+   ****************************** */
+
+  .c-stage__label {
+    position: relative;
+    display: inline-block;
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: calc(100% + 5px);
+      left: 0;
+      background-color: $color-secondary;
+      transform: rotate(1deg);
+      transform-origin: right;
+      z-index: -1;
+    }
+
+    @include mq($until: medium) {
+      @include font-size(14px, 20px);
+
+      &:before {
+        @include rem(height, 10px);
+        @include rem(top, 10px);
+      }
+    }
+
+    @include mq($from: medium) {
+
+      &:before {
+        @include rem(height, 10px);
+        @include rem(top, 12px);
+      }
+    }
+  }
+
+
+  /**
+   * Heading
+   ****************************** */
+
+  .c-stage__heading {
+
+    &:not(:first-child) {
+      @include rem(margin-top, $gutter-size*0.75);
+    }
+  }
+
+    .c-stage__title {}
+
+
+  /**
+   * Label
+   ****************************** */
+
+  .c-stage__travel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    &:not(:first-child) {
+
+      @include mq($until: medium) {
+        @include rem(margin-top, $gutter-size*1.5);
+      }
+
+      @include mq($from: medium, $until: large) {
+        @include rem(margin-top, $gutter-size*2);
+      }
+
+      @include mq($from: large) {
+        @include rem(margin-top, $gutter-size*2.5);
+      }
+    }
+  }
+
+    .c-stage__box {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      @include rem(padding, $gutter-size/2 $gutter-size*1.5 $gutter-size/2 $gutter-size/2);
+      background-color: $color-light-grey;
+      @include rem(border-radius, 35px);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      will-change: transform;
+      overflow: hidden;
+      backface-visibility: hidden;
+
+      &:hover {
+        @include rem(box-shadow, 0 5px 15px rgba($color-black, 0.1));
+        transform: translate3d(0, -$gutter-size/4, 0);
+      }
+    }
+
+    .c-stage__thumbnail {
+      @include rem(border-radius, 25px);
+    }
+
+    .c-stage__content {
+      text-align: left;
+
+      &:not(:first-child) {
+        @include rem(margin-left, $gutter-size*0.75);
+      }
+    }
+
+      .c-stage__subtitle {
+        font-family: $font-secondary;
+        @include font-size(14px, 20px);
+        font-weight: $font-bold;
+        font-style: italic;
+      }
+
+        .c-stage__link {
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+          }
+        }
+
+      .c-stage__description {
+        @include font-size(12px, 20px);
+
+        @include mq($until: small) {
+          @include font-size(10px, 15px);
+        }
+      }
+
+

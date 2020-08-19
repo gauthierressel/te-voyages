@@ -6,18 +6,105 @@
 
 .c-card {
   position: relative;
+  @include rem(max-width, 380px);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 
   /**
-   * Head
+   * Link
    ****************************** */
 
-  .c-card__head {}
+  .c-card__link {
+    display: block;
+  }
 
 
-  /**
-   * Body
-   ****************************** */
+    /**
+     * Head
+     ****************************** */
 
-  .c-card__body {}
+    .c-card__head {
+      position: relative;
+      z-index: 1;
+    }
+
+      .c-card__picture {
+        display: block;
+        transition: box-shadow 0.4s ease, transform 0.4s ease;
+
+        .c-card__link:hover & {
+          transform: translate3d(0, -$gutter-size/2, 0);
+          @include rem(box-shadow, 0 20px 30px rgba($color-black, 0.2));
+        }
+      }
+
+
+    /**
+     * Body
+     ****************************** */
+
+    .c-card__body {
+      position: relative;
+      z-index: 2;
+
+      @include mq($until: small) {
+        text-align: center;
+
+        &:not(:first-child) {
+          @include rem(margin-top, -$gutter-size/2);
+        }
+      }
+
+      @include mq($from: small, $until: medium) {
+
+        &:not(:first-child) {
+          @include rem(margin-top, $gutter-size/2);
+        }
+      }
+
+      @include mq($from: medium) {
+        @include rem(padding-right, $gutter-size);
+        @include rem(padding-left, $gutter-size);
+      }
+
+      @include mq($from: medium, $until: large) {
+
+        &:not(:first-child) {
+          @include rem(margin-top, -$gutter-size);
+        }
+      }
+
+      @include mq($from: large) {
+
+        &:not(:first-child) {
+          @include rem(margin-top, -$gutter-size*1.25);
+        }
+      }
+    }
+
+      .c-card__title {
+
+        .c-card__link:hover & {
+
+          &:after {
+            transform: rotate(1deg) scale(1);
+          }
+        }
+      }
+
+      .c-card__description {
+
+        &:not(:first-child) {
+
+          @include mq($until: medium) {
+            @include rem(margin-top, $gutter-size/2);
+            @include font-size(14px, 20px);
+          }
+
+          @include mq($from: medium) {
+            @include rem(margin-top, $gutter-size);
+          }
+        }
+      }

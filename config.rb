@@ -8,6 +8,12 @@ dato.travels.each do |travel|
   proxy "/voyages/#{travel_slug}/index.html", "/voyage.html", :locals => { :travel => travel }
 end
 
+dato.stages.each do |stage|
+  travel_slug = (stage.travel.title).slugify
+  stage_slug = (stage.title).slugify
+  proxy "/voyages/#{travel_slug}/#{stage_slug}/index.html", "/etape.html", :locals => { :stage => stage }
+end
+
 # enable livereload on development
 # configure :development do
 #   activate :livereload

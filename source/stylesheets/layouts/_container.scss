@@ -11,7 +11,7 @@
   @include rem(padding-right, $gutter-size);
   @include rem(padding-left, $gutter-size);
 
-  .l-container {
+  .l-container & {
     padding-right: 0;
     padding-left: 0;
   }
@@ -22,4 +22,18 @@
  * Types
  ****************************** */
 
-.l-container-- {}
+.l-container--small {
+  @include rem(max-width, $container-small + $gutter-size * 2);
+
+  .l-container & {
+    @include rem(max-width, $container-small);
+  }
+}
+
+.l-container--large {
+  @include rem(max-width, $container-large + $gutter-size * 2);
+
+  .l-container & {
+    @include rem(max-width, $container-large);
+  }
+}

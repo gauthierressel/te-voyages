@@ -1,0 +1,112 @@
+/**
+ * COMPONENTS
+ * Name : Introduction
+ ************************************************************ */
+
+
+.c-introduction {
+  position: relative;
+}
+
+
+  /**
+   * Head
+   ****************************** */
+
+  .c-introduction__head {
+    position: relative;
+    z-index: 1;
+  }
+
+    .c-introduction__map {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      background-color: $color-grey;
+      @include rem(border-radius, 160px);
+      @include rem(box-shadow, 0 20px 30px rgba($color-black, 0.1));
+      transition: transform 0.3s ease;
+      overflow: hidden;
+
+      &:hover {
+        transform: translate3d(0, -$gutter-size, 0);
+      }
+
+      @include mq($until: small) {
+        @include rem(width, 260px);
+        @include rem(height, 260px);
+      }
+
+      @include mq($from: small) {
+        @include rem(width, 320px);
+        @include rem(height, 320px);
+      }
+    }
+
+      .c-introduction__picture {
+        display: block;
+      }
+
+
+  /**
+   * Body
+   ****************************** */
+
+  .c-introduction__body {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background-color: $color-light-grey;
+      transform: rotate(2deg);
+      z-index: -1;
+    }
+
+    &:not(:first-child) {
+      @include rem(margin-top, -$gutter-size*3);
+    }
+
+    @include mq($until: medium) {
+      @include rem(padding, $gutter-size*4.5 0 $gutter-size*2);
+
+      &:before {
+        @include rem(right, -$gutter-size*1.5);
+        @include rem(left, -$gutter-size*1.5);
+      }
+    }
+
+    @include mq($from: medium) {
+
+      &:before {
+        right: 0;
+        left: 0;
+      }
+    }
+
+    @include mq($from: medium, $until: large) {
+      @include rem(padding, $gutter-size*4.5 $gutter-size*2 $gutter-size*2.5);
+    }
+
+    @include mq($from: large) {
+      @include rem(padding, $gutter-size*4.5 $gutter-size*3 $gutter-size*3);
+    }
+  }
+
+    .c-introduction__content {
+      text-align: center;
+
+      @include mq($until: medium) {
+        @include font-size(16px, 24px);
+      }
+
+      @include mq($from: medium, $until: large) {
+        @include font-size(18px, 26px);
+      }
+
+      @include mq($from: large) {
+        @include font-size(20px, 30px);
+      }
+    }

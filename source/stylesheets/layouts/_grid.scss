@@ -9,14 +9,83 @@
 }
 
 
+/**
+ * Types
+ ****************************** */
+
+.l-grid--halves {}
+
+
   /**
    * Items
    ****************************** */
 
   .l-grid__items {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+
+    .l-grid--halves & {
+
+      @include mq($from: small) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      @include mq($from: small, $until: medium) {
+        @include rem(margin-top, -$gutter-size/2);
+        @include rem(margin-right, -$gutter-size/2);
+        @include rem(margin-bottom, -$gutter-size/2);
+        @include rem(margin-left, -$gutter-size/2);
+      }
+
+      @include mq($from: medium, $until: large) {
+        @include rem(margin-top, -$gutter-size);
+        @include rem(margin-right, -$gutter-size);
+        @include rem(margin-bottom, -$gutter-size);
+        @include rem(margin-left, -$gutter-size);
+      }
+
+      @include mq($from: large) {
+        @include rem(margin-top, -$gutter-size*1.5);
+        @include rem(margin-right, -$gutter-size*1.5);
+        @include rem(margin-bottom, -$gutter-size*1.5);
+        @include rem(margin-left, -$gutter-size*1.5);
+      }
+    }
+
+    .l-grid--thirds & {
+
+      @include mq($from: small) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      @include mq($from: small, $until: medium) {
+        @include rem(margin-top, -$gutter-size/4);
+        @include rem(margin-right, -$gutter-size/4);
+        @include rem(margin-bottom, -$gutter-size/4);
+        @include rem(margin-left, -$gutter-size/4);
+      }
+
+      @include mq($from: medium) {
+        @include rem(margin-top, -$gutter-size/2);
+        @include rem(margin-right, -$gutter-size/2);
+        @include rem(margin-bottom, -$gutter-size/2);
+        @include rem(margin-left, -$gutter-size/2);
+      }
+    }
+
+    .l-grid--swipe & {
+
+      @include mq($until: small) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        @include rem(margin-right, -$gutter-size);
+        @include rem(margin-left, -$gutter-size);
+        overflow-x: scroll;
+      }
+    }
   }
 
 
@@ -24,4 +93,70 @@
      * Item
      ****************************** */
 
-    .l-grid__item {}
+    .l-grid__item {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      .l-grid--halves & {
+
+        @include mq($until: small) {
+
+          &:not(:first-child) {
+            @include rem(margin-top, $gutter-size*1.5);
+          }
+        }
+
+        @include mq($from: small) {
+          width: 50%;
+        }
+
+        @include mq($from: small, $until: medium) {
+          @include rem(padding, $gutter-size/2);
+        }
+
+        @include mq($from: medium, $until: large) {
+          @include rem(padding, $gutter-size);
+        }
+
+        @include mq($from: large) {
+          @include rem(padding, $gutter-size*1.5);
+        }
+      }
+
+      .l-grid--thirds & {
+
+        @include mq($until: small) {
+
+          &:not(:first-child) {
+            @include rem(margin-top, $gutter-size);
+          }
+        }
+
+        @include mq($from: small) {
+          width: 33.333%;
+        }
+
+        @include mq($from: small, $until: medium) {
+          @include rem(padding, $gutter-size/4);
+        }
+
+        @include mq($from: medium) {
+          @include rem(padding, $gutter-size/2);
+        }
+      }
+
+      .l-grid--swipe & {
+
+        @include mq($until: small) {
+          max-width: 85vw;
+          @include rem(padding, 0 $gutter-size);
+
+          &:not(:first-child) {
+            margin-top: 0;
+          }
+        }
+      }
+    }

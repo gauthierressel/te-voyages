@@ -4,4 +4,121 @@
  ************************************************************ */
 
 
-.c-title {}
+.c-title {
+  position: relative;
+  display: inline-block;
+  font-family: $font-secondary;
+  font-weight: $font-bold;
+  font-style: italic;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    transform-origin: right;
+    z-index: -1;
+  }
+
+  &:before {
+    background-color: $color-primary;
+    transform: rotate(1deg);
+  }
+
+  &:after {
+    background-color: $color-secondary;
+    transition: transform 0.2s ease;
+    transform: rotate(1deg) scaleX(0);
+  }
+
+  @include mq($until: small) {
+    @include font-size(26px, 36px);
+
+    &:before,
+    &:after {
+      width: calc(100% + 5px);
+      @include rem(height, 25px);
+      @include rem(top, 10px);
+    }
+  }
+
+  @include mq($from: small, $until: medium) {
+    @include font-size(44px, 54px);
+
+    &:before,
+    &:after {
+      width: calc(100% + 10px);
+      @include rem(height, 40px);
+      @include rem(top, 15px);
+    }
+  }
+
+  @include mq($from: medium, $until: large) {
+    @include font-size(62px, 72px);
+
+    &:before,
+    &:after {
+      width: calc(100% + 10px);
+      @include rem(height, 55px);
+      @include rem(top, 20px);
+    }
+  }
+
+  @include mq($from: large) {
+    @include font-size(80px, 100px);
+
+    &:before,
+    &:after {
+      width: calc(100% + 15px);
+      @include rem(height, 70px);
+      @include rem(top, 30px);
+    }
+  }
+}
+
+.c-title--small {
+
+  @include mq($until: medium) {
+    @include font-size(24px, 24px);
+
+    &:before,
+    &:after {
+      width: calc(100% + 5px);
+      @include rem(height, 24px);
+      @include rem(top, 5px);
+    }
+  }
+
+  @include mq($from: medium, $until: large) {
+    @include font-size(32px, 32px);
+
+    &:before,
+    &:after {
+      width: calc(100% + 10px);
+      @include rem(height, 32px);
+      @include rem(top, 7px);
+    }
+  }
+
+  @include mq($from: large) {
+    @include font-size(40px, 40px);
+
+    &:before,
+    &:after {
+      width: calc(100% + 10px);
+      @include rem(height, 40px);
+      @include rem(top, 7px);
+    }
+  }
+}
+
+.c-title--secondary {
+
+  &:before {
+    background-color: $color-secondary;
+  }
+
+  &:after {
+    background-color: $color-primary;
+  }
+}

@@ -8,17 +8,21 @@
  * Imports
  **********************************************************************************/
 
-// Manrope
-// https://fonts.google.com/specimen/Manrope?query=manrope&preview.text=&preview.text_type=custom&sidebar.open&selection.family=Manrope:wght@200;300;400;500;600;700;800
-// @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+// Open Sans
+// https://fonts.google.com/specimen/Open+Sans?query=open+sans&selection.family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&sidebar.open=true
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// Playfair Display
+// https://fonts.google.com/specimen/Playfair+Display?query=playfair&sidebar.open=true&selection.family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
 
 /**
  * Families
  **********************************************************************************/
 
-$font-primary: Arial, sans-serif;
-$font-secondary: "Times New Roman", serif;
+$font-primary: "Open Sans", "Arial", sans-serif;
+$font-secondary: "Playfair Display", "Times New Roman", serif;
 $font-default: $font-primary;
 
 

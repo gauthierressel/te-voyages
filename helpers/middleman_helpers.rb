@@ -100,4 +100,63 @@ module MiddlemanHelpers
     value.blank? ? nil : value
   end
 
+  def period(period_start, period_end)
+    months_fr = { "January" => "janvier",
+                  "February" => "février",
+                  "March" => "mars",
+                  "April" => "avril",
+                  "May" => "mai",
+                  "June" => "juin",
+                  "July" => "juillet",
+                  "August" => "août",
+                  "September" => "septembre",
+                  "October" => "octobre",
+                  "November" => "novembre",
+                  "December" => "décembre" }
+
+    start_day   = period_start.strftime('%d')
+    start_month = period_start.strftime('%B')
+    start_year  = period_start.strftime('%Y')
+
+    end_day   = period_end.strftime('%d')
+    end_month = period_end.strftime('%B')
+    end_year  = period_end.strftime('%Y')
+
+    text = "Du #{start_day}"
+
+    if start_month != end_month
+      text += " #{months_fr[start_month]}"
+    end
+
+    if start_year != end_year
+      text += " #{start_year}"
+    end
+
+    text += " au #{end_day} #{months_fr[end_month]} #{end_year}"
+
+    return text
+  end
+
+  def date(date)
+    months_fr = { "January" => "janvier",
+                  "February" => "février",
+                  "March" => "mars",
+                  "April" => "avril",
+                  "May" => "mai",
+                  "June" => "juin",
+                  "July" => "juillet",
+                  "August" => "août",
+                  "September" => "septembre",
+                  "October" => "octobre",
+                  "November" => "novembre",
+                  "December" => "décembre" }
+
+    day   = date.strftime('%d')
+    month = date.strftime('%B')
+    year  = date.strftime('%Y')
+    text  = "#{day} #{months_fr[month]} #{year}"
+
+    return text
+  end
+
 end

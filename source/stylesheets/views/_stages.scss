@@ -1,0 +1,282 @@
+/**
+ * VIEWS
+ * Name : Stages
+ ************************************************************ */
+
+
+.v-stages {
+  position: relative;
+  @include rem(padding-top, $gutter-size*4);
+}
+
+
+  /**
+   * Items
+   ****************************** */
+
+  .v-stages__items {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      @include rem(width, 4px);
+      top: 0;
+      bottom: 0;
+      background-color: $color-primary;
+
+      @include mq($until: small) {
+        left: 0;
+      }
+
+      @include mq($from: small, $until: medium) {
+        @include rem(left, $gutter-size);
+      }
+
+      @include mq($from: medium) {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+
+    /**
+     * Item
+     ****************************** */
+
+    .v-stages__item {
+      position: relative;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+      }
+
+      &:before {
+        @include rem(width, 32px);
+        @include rem(height, 32px);
+        background-color: $color-background;
+        @include rem(border, 3px solid $color-primary);
+        @include rem(border-radius, 16px);
+      }
+
+      &:after {
+        @include rem(width, 12px);
+        @include rem(height, 12px);
+        @include rem(margin, 10px);
+        background-color: $color-primary;
+        @include rem(border-radius, 11px);
+      }
+
+      @include mq($until: small) {
+        @include rem(padding-left, $gutter-size*1.5);
+
+        &:before,
+        &:after {
+          @include rem(left, -16px);
+        }
+
+        &:not(:first-child) {
+          @include rem(margin-top, $gutter-size*3);
+        }
+      }
+
+      @include mq($from: small, $until: medium) {
+        @include rem(padding-left, $gutter-size*3.25);
+
+        &:before,
+        &:after {
+          @include rem(left, 4px);
+        }
+
+        &:not(:first-child) {
+          @include rem(margin-top, $gutter-size*4);
+        }
+      }
+
+      @include mq($until: medium) {
+
+        &:before,
+        &:after {
+          @include rem(top, $gutter-size*1.5);
+        }
+      }
+
+      @include mq($from: medium) {
+        width: 50%;
+
+        &:nth-child(odd) {
+          margin-right: auto;
+          margin-left: 0;
+          text-align: right;
+
+          &:before,
+          &:after {
+            @include rem(right, -16px);
+          }
+        }
+
+        &:nth-child(even) {
+          margin-right: 0;
+          margin-left: auto;
+          text-align: left;
+
+          &:before,
+          &:after {
+            @include rem(left, -16px);
+          }
+        }
+      }
+
+      @include mq($from: medium, $until: large) {
+
+        &:nth-child(odd) {
+          @include rem(padding-right, $gutter-size*2);
+        }
+
+        &:nth-child(even) {
+          @include rem(padding-left, $gutter-size*2);
+        }
+
+        &:before,
+        &:after {
+          @include rem(top, $gutter-size*1.75);
+        }
+      }
+
+      @include mq($from: large) {
+
+        &:nth-child(odd) {
+          @include rem(padding-right, $gutter-size*3);
+        }
+
+        &:nth-child(even) {
+          @include rem(padding-left, $gutter-size*3);
+        }
+
+        &:before,
+        &:after {
+          @include rem(top, $gutter-size*2);
+        }
+      }
+    }
+
+
+      /**
+       * Label
+       ****************************** */
+
+      .v-stages__label {
+        position: relative;
+        display: inline-block;
+        @include font-size(12px, 16px);
+
+        &:before {
+          content: '';
+          position: absolute;
+          display: block;
+          width: calc(100% + 5px);
+          @include rem(height, 10px);
+          @include rem(top, 7px);
+          left: 0;
+          background-color: $color-secondary;
+          transform: rotate(1deg);
+          transform-origin: right;
+          z-index: -1;
+        }
+      }
+
+
+      /**
+       * Heading
+       ****************************** */
+
+      .v-stages__heading {
+
+        &:not(:first-child) {
+          @include rem(margin-top, $gutter-size/2);
+        }
+      }
+
+        .v-stages__title {
+          position: relative;
+          display: inline;
+          font-family: $font-secondary;
+          font-weight: $font-bold;
+          font-style: italic;
+
+          &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            left: 0;
+            background-color: $color-primary;
+            transform: rotate(2deg);
+            transform-origin: right;
+            z-index: -1;
+          }
+
+          @include mq($until: medium) {
+            @include font-size(16px, 24px);
+
+            &:before {
+              @include rem(width, 50px);
+              @include rem(height, 11px);
+              @include rem(top, 11px);
+            }
+          }
+
+          @include mq($from: medium, $until: large) {
+            @include font-size(20px, 28px);
+
+            &:before {
+              @include rem(width, 60px);
+              @include rem(height, 12px);
+              @include rem(top, 15px);
+            }
+          }
+
+          @include mq($from: large) {
+            @include font-size(24px, 32px);
+
+            &:before {
+              @include rem(width, 75px);
+              @include rem(height, 13px);
+              @include rem(top, 17px);
+            }
+          }
+        }
+
+          .v-stages__link {}
+
+
+      /**
+       * Description
+       ****************************** */
+
+      .v-stages__description {
+
+        &:not(:first-child) {
+          @include rem(margin-top, $gutter-size/2);
+        }
+
+        @include mq($until: small) {
+          @include font-size(14px, 20px);
+        }
+      }
+
+
+      /**
+       * More
+       ****************************** */
+
+      .v-stages__more {
+
+        &:not(:first-child) {
+          @include rem(margin-top, $gutter-size);
+        }
+      }
+
+        .v-stages__button {}

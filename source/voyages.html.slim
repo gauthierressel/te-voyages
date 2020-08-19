@@ -1,0 +1,64 @@
+---
+title: Voyages | TE Voyages
+---
+
+- body_class "page-travels"
+
+  
+/ Variables
+- current_date = Time.now.strftime("%Y%m%d")
+
+
+/ HEAD
+.l-main__head
+
+  .l-main__section.l-main__section--center
+    .l-container.l-container--small
+      .c-title= "Tous les voyages"
+
+
+/ BODY
+.l-main__body
+
+  .l-main__section
+    .l-container
+
+      .v-travels
+
+        - travels_by_date   = dato.travels.sort_by{|i| i.start }.reverse
+        - current_continent = ""
+
+        - for travel in travels_by_date.sort_by{|item| item.continent }.each do
+
+          / Variables
+          - travel_start      = travel.start.strftime("%Y%m%d")
+
+          - if travel_start <= current_date
+            - travel_slug       = (travel.title).slugify
+            - travel_classes    = ""
+
+            - if travel.continent != current_continent
+              - travel_classes = " v-travels__item--first"
+
+            - current_continent = travel.continent
+
+            / Markup
+            .v-travels__item(data-continent="#{travel.continent}" class="#{travel_classes}")
+              .v-travels__container
+                = link_to "/voyages/#{travel_slug}/", :class => "v-travels__link" do
+
+                  .v-travels__aside
+                    = image_tag travel.picture.url({ w: 200, h: 200, fit: "crop", crop: "center" }), :class => "v-travels__picture"
+
+                  .v-travels__main
+
+                    .v-travels__title.c-title.c-title--small= travel.title
+
+                    .v-travels__description
+                      strong
+                        = period(travel.start, travel.end)
+                      br
+                      span
+                        = travel.country
+                        = ", "
+                        = travel.continent

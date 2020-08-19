@@ -1,0 +1,125 @@
+/**
+ * COMPONENTS
+ * Name : Next
+ ************************************************************ */
+
+
+.c-next {
+  position: relative;
+}
+
+
+  /**
+   * Head
+   ****************************** */
+
+  .c-next__head {
+    position: relative;
+    z-index: 1;
+  }
+
+    .c-next__map {
+      display: block;
+      @include rem(width, 320px);
+      @include rem(height, 320px);
+      margin-right: auto;
+      margin-left: auto;
+      background-color: $color-grey;
+      @include rem(border-radius, 160px);
+      @include rem(box-shadow, 0 20px 30px rgba($color-black, 0.1));
+      transition: transform 0.3s ease;
+      overflow: hidden;
+
+      &:hover {
+        transform: translate3d(0, -$gutter-size, 0);
+      }
+
+      @include mq($until: small) {
+        @include rem(width, 260px);
+        @include rem(height, 260px);
+      }
+
+      @include mq($from: small) {
+        @include rem(width, 320px);
+        @include rem(height, 320px);
+      }
+    }
+
+      .c-next__picture {
+        display: block;
+      }
+
+
+  /**
+   * Body
+   ****************************** */
+
+  .c-next__body {
+    position: relative;
+    @include rem(border-top, 1px solid $color-grey);
+    z-index: 2;
+
+    &:not(:first-child) {
+      @include rem(margin-top, -$gutter-size*2);
+    }
+
+    @include mq($until: small) {
+      @include rem(margin-bottom, -$gutter-size*1.5);
+    }
+
+    @include mq($from: small, $until: medium) {
+      @include rem(margin-bottom, -$gutter-size*2);
+    }
+
+    @include mq($until: medium) {
+
+      .l-container & {
+        @include rem(margin-right, -$gutter-size);
+        @include rem(margin-left, -$gutter-size);
+        @include rem(padding-right, $gutter-size);
+        @include rem(padding-left, $gutter-size);
+      }
+    }
+
+    @include mq($from: medium, $until: large) {
+      @include rem(margin-bottom, -$gutter-size*2.5);
+    }
+
+    @include mq($from: large) {
+      @include rem(margin-bottom, -$gutter-size*3);
+    }
+  }
+
+    .c-next__link {
+      display: block;
+      @include rem(padding-top, $gutter-size*2.5);
+      @include rem(padding-bottom, $gutter-size*3);
+      text-align: center;
+      background-color: $color-background;
+    }
+
+      .c-next__label {
+
+        @include mq($until: small) {
+          @include font-size(16px, 24px);
+        }
+
+        @include mq($from: small, $until: medium) {
+          @include font-size(20px, 28px);
+        }
+
+        @include mq($from: medium) {
+          @include font-size(24px, 32px);
+        }
+      }
+
+      .c-next__title {
+        z-index: 1;
+
+        .c-next__link:hover & {
+
+          &:after {
+            transform: rotate(1deg) scale(1);
+          }
+        }
+      }

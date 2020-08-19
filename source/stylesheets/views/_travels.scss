@@ -1,0 +1,269 @@
+/**
+ * VIEWS
+ * Name : Travels
+ ************************************************************ */
+
+
+.v-travels {
+  position: relative;
+}
+
+
+  /**
+   * Item
+   ****************************** */
+
+  .v-travels__item:not(.v-travels__item--first) {
+
+    &:not(:first-child) {
+
+      @include mq($until: small) {
+        @include rem(margin-top, $gutter-size*2);
+      }
+
+      @include mq($from: small, $until: medium) {
+        @include rem(margin-top, $gutter-size);
+      }
+    }
+  }
+
+  .v-travels__item--first {
+
+    &:before {
+      content: attr(data-continent);
+      position: relative;
+      display: block;
+      font-family: $font-secondary;
+      font-style: italic;
+      text-align: center;
+      color: $color-light-grey;
+
+      @include mq($until: small) {
+        @include rem(margin-bottom, $gutter-size);
+        @include font-size(60px, 60px);
+      }
+
+      @include mq($from: small, $until: medium) {
+        @include font-size(100px, 100px);
+      }
+
+      @include mq($from: medium, $until: large) {
+        @include font-size(140px, 140px);
+      }
+
+      @include mq($from: large) {
+        @include font-size(180px, 180px);
+      }
+    }
+
+    &:not(:first-child) {
+
+      &:before {
+
+        @include mq($until: small) {
+          @include rem(margin-top, $gutter-size*3);
+        }
+
+        @include mq($from: small, $until: medium) {
+          @include rem(margin-top, $gutter-size*4);
+        }
+
+        @include mq($from: medium, $until: large) {
+          @include rem(margin-top, $gutter-size*5);
+        }
+
+        @include mq($from: large) {
+          @include rem(margin-top, $gutter-size*6);
+        }
+      }
+    }
+  }
+
+  .v-travels__item--upcoming {}
+
+
+    /**
+     * Container
+     ****************************** */
+
+    .v-travels__container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      @include mq($until: small) {
+        justify-content: center;
+      }
+
+      @include mq($from: small) {
+
+        .v-travels__item:nth-child(odd) & {
+          justify-content: flex-start;
+        }
+
+        .v-travels__item:nth-child(even) & {
+          justify-content: flex-end;
+        }
+      }
+    }
+
+
+      /**
+       * Link
+       ****************************** */
+
+      .v-travels__link {
+
+        @include mq($from: small) {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
+      }
+
+
+        /**
+         * Aside
+         ****************************** */
+
+        .v-travels__aside {
+          position: relative;
+          z-index: 1;
+
+          @include mq($from: small) {
+            flex: 0 0 auto;
+
+            .v-travels__item:nth-child(odd) & {
+              order: 1;
+            }
+
+            .v-travels__item:nth-child(even) & {
+              order: 2;
+            }
+          }
+        }
+
+
+          /**
+           * Picture
+           ****************************** */
+
+          .v-travels__picture {
+            height: auto;
+            @include rem(border-radius, 100px);
+            transition: box-shadow 0.4s ease, transform 0.4s ease;
+            will-change: transform;
+            backface-visibility: hidden;
+
+            .v-travels__link:hover & {
+              @include rem(box-shadow, 0 10px 20px rgba($color-black, 0.25));
+              transform: translate3d(0, -$gutter-size/2, 0);
+            }
+
+            @include mq($from: small, $until: medium) {
+              @include rem(width, 150px);
+            }
+          }
+
+
+        /**
+         * Main
+         ****************************** */
+
+        .v-travels__main {
+          position: relative;
+          z-index: 2;
+
+          @include mq($until: small) {
+            text-align: center;
+
+            &:not(:first-child) {
+              @include rem(margin-top, -$gutter-size);
+            }
+          }
+
+          @include mq($from: small) {
+
+            .v-travels__item:nth-child(odd) & {
+              order: 2;
+              text-align: left;
+            }
+
+            .v-travels__item:nth-child(even) & {
+              order: 1;
+              text-align: right;
+            }
+          }
+        }
+
+
+          /**
+           * Heading
+           ****************************** */
+
+          .v-travels__heading {}
+
+            .v-travels__title {
+
+              @include mq($from: small) {
+
+                .v-travels__item:nth-child(odd) & {
+                  @include rem(margin-left, -$gutter-size*1.75);
+                }
+
+                .v-travels__item:nth-child(even) & {
+                  @include rem(margin-right, -$gutter-size*1.75);
+                }
+
+                .v-travels__link:hover & {
+
+                  &:after {
+                    transform: rotate(1deg) scale(1);
+                  }
+                }
+              }
+            }
+
+
+          /**
+           * Description
+           ****************************** */
+
+          .v-travels__description {
+
+            @include mq($until: medium) {
+              @include font-size(14px, 20px);
+
+              &:not(:first-child) {
+                @include rem(margin-top, $gutter-size/2);
+              }
+            }
+
+            @include mq($from: small, $until: medium) {
+
+              .v-travels__item:nth-child(odd) & {
+                @include rem(padding-left, $gutter-size*0.75);
+              }
+
+              .v-travels__item:nth-child(even) & {
+                @include rem(padding-right, $gutter-size*0.75);
+              }
+            }
+
+            @include mq($from: medium) {
+
+              &:not(:first-child) {
+                @include rem(margin-top, $gutter-size);
+              }
+
+              .v-travels__item:nth-child(odd) & {
+                @include rem(padding-left, $gutter-size);
+              }
+
+              .v-travels__item:nth-child(even) & {
+                @include rem(padding-right, $gutter-size);
+              }
+            }
+          }

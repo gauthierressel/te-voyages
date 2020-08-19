@@ -4,6 +4,7 @@
  * Layouts
  **********************************************************************************/
 
+@import "layouts/blocks";
 @import "layouts/container";
 @import "layouts/footer";
 @import "layouts/grid";
@@ -22,12 +23,15 @@
  * Components
  **********************************************************************************/
 
-@import "components/banner";
 @import "components/breadcrumb";
 @import "components/button";
 @import "components/card";
 @import "components/heading";
+@import "components/highlight";
+@import "components/introduction";
 @import "components/navigation";
+@import "components/next";
+@import "components/stage";
 @import "components/subtitle";
 @import "components/title";
 
@@ -35,7 +39,8 @@
  * Views
  **********************************************************************************/
 
-// @import "views/view";
+@import "views/stages";
+@import "views/travels";
 
 
 /**

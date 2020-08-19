@@ -10,18 +10,41 @@
 
 .s-richtext {
 
+  @include mq($until: small) {
+    @include font-size(14px, 20px);
+  }
+
   > * {}
 
+  h1,
   h2 {
-    @extend .c-title;
+    font-family: $font-secondary;
+    font-weight: $font-bold;
+    font-style: italic;
 
     &:not(:first-child) {
       @include rem(margin-top, $gutter-size*2);
     }
+
+    @include mq($until: small) {
+      @include font-size(20px, 24px);
+    }
+
+    @include mq($from: small, $until: medium) {
+      @include font-size(24px, 30px);
+    }
+
+    @include mq($from: medium) {
+      @include font-size(28px, 38px);
+    }
   }
 
-  h3 {
-    @extend .c-subtitle;
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include font-size(20px, 30px);
+    color: $color-dark-grey;
 
     &:not(:first-child) {
       @include rem(margin-top, $gutter-size*1.5);

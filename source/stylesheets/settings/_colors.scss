@@ -11,6 +11,13 @@
 $color-black: #000;
 $color-white: #fff;
 
+$color-grey: #eee;
+$color-dark-grey: #888;
+$color-light-grey: #f2f2f2;
+
+$color-yellow: #fffbc7;
+$color-blue: #c5eaf9;
+
 
 /**
  * Functionals colors
@@ -19,8 +26,8 @@ $color-white: #fff;
 $color-foreground: $color-black;
 $color-background: $color-white;
 
-$color-primary: $color-black;
-$color-secondary: $color-black;
+$color-primary: $color-yellow;
+$color-secondary: $color-blue;
 
 $color-success: $color-black;
 $color-error: $color-black;
