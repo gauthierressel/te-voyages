@@ -30,6 +30,16 @@
       z-index: 1;
     }
 
+    .c-card__head--empty {
+      padding-top: 100%;
+      background-color: $color-secondary;
+      transition: background-color 0.3s ease;
+
+      .c-card__link:hover & {
+        background-color: $color-primary;
+      }
+    }
+
       .c-card__picture {
         display: block;
         transition: box-shadow 0.4s ease, transform 0.4s ease;

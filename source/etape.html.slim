@@ -15,12 +15,21 @@ title: Étape | TE Voyages
       .l-container
 
         .c-stage
-          .c-stage__label= date(stage.date)
+
+          - if defined?(stage.date) and stage.date != ""
+            .c-stage__label= date(stage.date)
+
           .c-stage__heading
             .c-stage__title.c-title.c-title--small= stage.title
+
           .c-stage__travel
             .c-stage__box
-              = image_tag stage.travel.picture.url({ w: 50, h: 50, fit: "crop", crop: "center" }), :class => "c-stage__thumbnail"
+
+              - if defined?(stage.travel.picture) and stage.travel.picture
+                = image_tag stage.travel.picture.url({ w: 50, h: 50, fit: "crop", crop: "center" }), :class => "c-stage__thumbnail"
+              - else
+                .c-stage__thumbnail.c-stage__thumbnail--empty
+
               .c-stage__content
                 .c-stage__subtitle
                   = link_to stage.travel.title, "/voyages/#{travel_slug}/", :class => "c-stage__link"

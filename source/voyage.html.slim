@@ -15,11 +15,15 @@ title: Voyage | TE Voyages
       .l-container.l-container--large
 
         .c-highlight
-          .c-highlight__head
-            = image_tag travel.picture.url({ w: 1280, h: 450, fit: "crop", crop: "center" }), :class => "c-highlight__picture--large"
-            = image_tag travel.picture.url({ w: 480, h: 400, fit: "crop", crop: "center" }), :class => "c-highlight__picture--small"
+
+          - if defined?(travel.picture) and travel.picture
+            .c-highlight__head
+              = image_tag travel.picture.url({ w: 1280, h: 450, fit: "crop", crop: "center" }), :class => "c-highlight__picture--large"
+              = image_tag travel.picture.url({ w: 480, h: 400, fit: "crop", crop: "center" }), :class => "c-highlight__picture--small"
+
           .c-highlight__body
-            .c-highlight__title.c-title=travel.title
+            .c-highlight__title.c-title= travel.title
+
             .c-highlight__description
               strong
                 = period(travel.start, travel.end)
@@ -38,11 +42,12 @@ title: Voyage | TE Voyages
 
         .c-introduction
 
-          .c-introduction__head
-            = link_to "https://www.google.com/maps/search/?api=1&query=#{travel.location.latitude},#{travel.location.longitude}", :target => "_blank", :class => "c-introduction__map"
-              = image_tag "https://maps.googleapis.com/maps/api/staticmap?size=320x320&format=JPG&language=fr&markers=size:small|#{travel.location.latitude},#{travel.location.longitude}&zoom=4&key=AIzaSyBSaiEyedIMnqLQytBBEnIs2LKkL2hqeD4", :class => "c-introduction__picture"
+          - if defined?(travel.location) and travel.location.latitude != "" and travel.location.longitude != ""
+            .c-introduction__head
+              = link_to "https://www.google.com/maps/search/?api=1&query=#{travel.location.latitude},#{travel.location.longitude}", :target => "_blank", :class => "c-introduction__map"
+                = image_tag "https://maps.googleapis.com/maps/api/staticmap?size=320x320&format=JPG&language=fr&markers=size:small|#{travel.location.latitude},#{travel.location.longitude}&zoom=4&key=AIzaSyBSaiEyedIMnqLQytBBEnIs2LKkL2hqeD4", :class => "c-introduction__picture"
 
-          - if travel.introduction != ""
+          - if defined?(travel.introduction) and travel.introduction != ""
             .c-introduction__body
               .c-introduction__content= travel.introduction
 
@@ -58,10 +63,16 @@ title: Voyage | TE Voyages
               - stage_slug = (stage.title).slugify
 
               .v-stages__item
-                .v-stages__label= date(stage.date)
+
+                - if defined?(stage.date) and stage.date != ""
+                  .v-stages__label= date(stage.date)
+
                 .v-stages__heading
                   .v-stages__title= link_to stage.title, "/voyages/#{travel_slug}/#{stage_slug}/", :class => "v-stages__link"
-                .v-stages__description= stage.summary
+
+                - if defined?(stage.summary) and stage.summary != ""
+                  .v-stages__description= stage.summary
+
                 .v-stages__more
                   = link_to "Lire la suite", "/voyages/#{travel_slug}/#{stage_slug}/", :class => "v-stages__button c-button"
 

@@ -50,11 +50,15 @@ title: TE Voyages
 
     .l-main__section
       .l-container
+
         .c-highlight
           = link_to "/voyages/#{travel_slug}/", :class => "c-highlight__link" do
-            .c-highlight__head
-              = image_tag highlight_travel.picture.url({ w: 960, h: 450, fit: "crop", crop: "center" }), :class => "c-highlight__picture c-highlight__picture--large"
-              = image_tag highlight_travel.picture.url({ w: 480, h: 400, fit: "crop", crop: "center" }), :class => "c-highlight__picture c-highlight__picture--small"
+
+            - if defined?(highlight_travel.picture) and highlight_travel.picture
+              .c-highlight__head
+                = image_tag highlight_travel.picture.url({ w: 960, h: 450, fit: "crop", crop: "center" }), :class => "c-highlight__picture c-highlight__picture--large"
+                = image_tag highlight_travel.picture.url({ w: 480, h: 400, fit: "crop", crop: "center" }), :class => "c-highlight__picture c-highlight__picture--small"
+
             .c-highlight__body
               .c-highlight__title.c-title= highlight_travel.title
               .c-highlight__description
@@ -89,9 +93,11 @@ title: TE Voyages
                 .c-card
                   = link_to "/voyages/#{travel_slug}/", :class => "c-card__link" do
 
-                    - if travel.picture
+                    - if defined?(travel.picture) and travel.picture
                       .c-card__head
                         = image_tag travel.picture.url({ w: 380, h: 380, fit: "crop", crop: "center" }), :class => "c-card__picture"
+                    - else
+                      .c-card__head.c-card__head--empty
 
                     .c-card__body
                       .c-card__title.c-title.c-title--small= travel.title

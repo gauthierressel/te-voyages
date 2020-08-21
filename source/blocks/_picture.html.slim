@@ -2,5 +2,5 @@
 
   = image_tag record.file.url({ w: 960, fit: "crop", crop: "center" }), :alt => record.file.alt, :class => "l-blocks__picture"
 
-  - if record.caption
+  - if defined?(record.caption) and record.caption != ""
     .l-blocks__caption= record.caption

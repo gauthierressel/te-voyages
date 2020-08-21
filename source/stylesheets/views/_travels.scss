@@ -40,19 +40,19 @@
 
       @include mq($until: small) {
         @include rem(margin-bottom, $gutter-size);
-        @include font-size(60px, 60px);
+        @include font-size(45px, 45px);
       }
 
       @include mq($from: small, $until: medium) {
-        @include font-size(100px, 100px);
+        @include font-size(70px, 70px);
       }
 
       @include mq($from: medium, $until: large) {
-        @include font-size(140px, 140px);
+        @include font-size(100px, 100px);
       }
 
       @include mq($from: large) {
-        @include font-size(180px, 180px);
+        @include font-size(150px, 150px);
       }
     }
 
@@ -142,6 +142,33 @@
             .v-travels__item:nth-child(even) & {
               order: 2;
             }
+          }
+        }
+
+        .v-travels__aside--empty {
+          background-color: $color-secondary;
+          transition: background-color 0.3s ease;
+
+          .v-travels__link:hover & {
+            background-color: $color-primary;
+          }
+
+          @include mq($until: small) {
+            @include rem(width, 200px);
+            @include rem(height, 200px);
+            @include rem(border-radius, 100px);
+          }
+
+          @include mq($from: small, $until: medium) {
+            @include rem(width, 150px);
+            @include rem(height, 150px);
+            @include rem(border-radius, 75px);
+          }
+
+          @include mq($from: medium) {
+            @include rem(width, 200px);
+            @include rem(height, 200px);
+            @include rem(border-radius, 100px);
           }
         }
 

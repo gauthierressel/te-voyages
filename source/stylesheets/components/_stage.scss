@@ -114,6 +114,12 @@
       @include rem(border-radius, 25px);
     }
 
+    .c-stage__thumbnail--empty {
+      @include rem(width, 50px);
+      @include rem(height, 50px);
+      background-color: $color-secondary;
+    }
+
     .c-stage__content {
       text-align: left;
 

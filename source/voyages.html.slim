@@ -31,11 +31,11 @@ title: Voyages | TE Voyages
         - for travel in travels_by_date.sort_by{|item| item.continent }.each do
 
           / Variables
-          - travel_start      = travel.start.strftime("%Y%m%d")
+          - travel_start = travel.start.strftime("%Y%m%d")
 
           - if travel_start <= current_date
-            - travel_slug       = (travel.title).slugify
-            - travel_classes    = ""
+            - travel_slug    = (travel.title).slugify
+            - travel_classes = ""
 
             - if travel.continent != current_continent
               - travel_classes = " v-travels__item--first"
@@ -47,8 +47,11 @@ title: Voyages | TE Voyages
               .v-travels__container
                 = link_to "/voyages/#{travel_slug}/", :class => "v-travels__link" do
 
-                  .v-travels__aside
-                    = image_tag travel.picture.url({ w: 200, h: 200, fit: "crop", crop: "center" }), :class => "v-travels__picture"
+                  - if defined?(travel.picture) and travel.picture
+                    .v-travels__aside
+                      = image_tag travel.picture.url({ w: 200, h: 200, fit: "crop", crop: "center" }), :class => "v-travels__picture"
+                  - else
+                    .v-travels__aside.v-travels__aside--empty
 
                   .v-travels__main
 

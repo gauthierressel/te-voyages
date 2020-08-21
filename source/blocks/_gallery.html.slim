@@ -15,5 +15,5 @@
           .l-grid__item
             = image_tag picture.url({ w: 460, h: 460, fit: "crop", crop: "center" }), :alt => picture.alt, :class => "l-blocks__picture"
 
-  - if record.caption != ""
+  - if defined?(record.caption) and record.caption != ""
     .l-blocks__caption= record.caption
