@@ -19,7 +19,10 @@ title: Week-ends | TE Voyages
   .l-main__section
     .l-container
 
-      ul
-        - for weekend in dato.weekends do
-          - weekend_slug = (weekend.title).slugify
-          = link_to weekend.title, "/week-ends/#{weekend_slug}/"
+      - if defined?(dato.weekends) and dato.weekends.length > 0
+        ul
+          - for weekend in dato.weekends do
+            - weekend_slug = (weekend.title).slugify
+            = link_to weekend.title, "/week-ends/#{weekend_slug}/"
+      - else
+        p= "Aucun week-end pour le moment."
