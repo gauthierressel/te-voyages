@@ -5,6 +5,7 @@ gem 'middleman-sprockets', '~> 4.1.0'
 gem 'middleman-autoprefixer', '~> 2.7'
 gem 'middleman-livereload'
 gem 'middleman-dato', '0.9.0'
+gem 'imgix', '3.4.0'
 gem 'slim'
 gem 'slugify', '~> 1.0', '>= 1.0.6'
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby, :x64_mingw]
