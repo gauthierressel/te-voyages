@@ -39,6 +39,7 @@ tmp
 .~lock.*
 .tmp*
 **.orig
+.keep
 
 
 ### Editors meta-data
